@@ -12,3 +12,36 @@ EntityList::~EntityList()
 {
     delete ui;
 }
+
+
+
+
+void EntityList::on_addBtn_clicked()
+{
+    add();
+}
+
+
+void EntityList::on_removeBtn_clicked()
+{
+    remove();
+}
+
+
+void EntityList::on_idSortBtn_clicked()
+{
+    idSort();
+}
+
+
+void EntityList::on_nameSortBtn_clicked()
+{
+    nameSort();
+}
+
+
+void EntityList::on_listWidget_itemClicked(QListWidgetItem *item)
+{
+    showInfo();
+}
+

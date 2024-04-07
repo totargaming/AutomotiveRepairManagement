@@ -33,20 +33,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnLoad">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>90</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Load</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnRemove">
+  <widget class="QPushButton" name="removeBtn">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -59,7 +46,7 @@
     <string>Remove</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnAdd">
+  <widget class="QPushButton" name="addBtn">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -70,6 +57,32 @@
    </property>
    <property name="text">
     <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="idSortBtn">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>90</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sort by ID</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="nameSortBtn">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>130</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sort by Name</string>
    </property>
   </widget>
  </widget>
