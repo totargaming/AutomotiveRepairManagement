@@ -10,21 +10,27 @@ CONFIG += c++17
 
 SOURCES += \
     addtostorage.cpp \
+    entitylist.cpp \
     main.cpp \
     mainwindow.cpp \
+    partupdate.cpp \
     storage.cpp \
     validation.cpp
 
 HEADERS += \
     SQLheader.h \
     addtostorage.h \
+    entitylist.h \
     mainwindow.h \
+    partupdate.h \
     storage.h \
     validation.h
 
 FORMS += \
     addtostorage.ui \
+    entitylist.ui \
     mainwindow.ui \
+    partupdate.ui \
     storage.ui
 
 # Default rules for deployment.

@@ -7,6 +7,7 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include "storage.h"
+#include "entitylist.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -33,8 +34,9 @@ private slots:
     void on_Task_clicked();
 
 private:
-    Storage* storage_ptr;
     Ui::MainWindow *ui;
+    Storage* storage_ptr;
+    EntityList* entityList_ptr;
     QSqlDatabase database;
 };
 #endif // MAINWINDOW_H

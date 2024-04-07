@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "SQLheader.h"
 #include "addtostorage.h"
+#include "partupdate.h"
 namespace Ui {
 class Storage;
 }
@@ -24,10 +25,13 @@ private slots:
 
     void on_addBtn_clicked();
 
+    void on_updateBtn_clicked();
+
 private:
     Ui::Storage *ui;
     QSqlQueryModel* model;
     addToStorage* addToStorage_ptr;
+    PartUpdate* partUpdate_ptr;
 };
 
 #endif // STORAGE_H

@@ -16,9 +16,9 @@
   <widget class="QPushButton" name="addBtn">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>350</x>
      <y>370</y>
-     <width>71</width>
+     <width>131</width>
      <height>24</height>
     </rect>
    </property>
@@ -61,7 +61,7 @@
      <x>70</x>
      <y>50</y>
      <width>41</width>
-     <height>16</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -86,17 +86,17 @@
     <string>Refresh</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="removeBtn">
+  <widget class="QPushButton" name="updateBtn">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>350</x>
      <y>340</y>
-     <width>71</width>
+     <width>131</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
-    <string>Remove</string>
+    <string>Update/Remove</string>
    </property>
   </widget>
   <widget class="QPushButton" name="searchBtn">

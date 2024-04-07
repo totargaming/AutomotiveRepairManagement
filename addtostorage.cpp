@@ -6,6 +6,8 @@ addToStorage::addToStorage(QWidget *parent)
     , ui(new Ui::addToStorage)
 {
     ui->setupUi(this);
+    database = QSqlDatabase::database("DB");
+
 }
 
 addToStorage::~addToStorage()
@@ -27,9 +29,8 @@ void addToStorage::on_addBtn_clicked()
         qDebug() << "partName: " << partName
                  << "Quantity" << quantity;
 
-        QSqlDatabase db = QSqlDatabase::database("DB");
         // Insert the value to database
-        QSqlQuery query(db);
+        QSqlQuery query(database);
         query.prepare("insert into Storage (name, quantity) values(:name, :quantity)");
         query.bindValue(":name", partName);
         query.bindValue(":quantity", quantity);
@@ -53,8 +54,7 @@ bool addToStorage::validateUserInput() {
         QMessageBox::critical(this, "Validation Error!", "Part's name is left blank!");
         return false;
     }
-    QSqlDatabase db = QSqlDatabase::database("DB");
-    QSqlQuery query(db);
+    QSqlQuery query(database);
     query.prepare("SELECT name FROM Storage");
     query.exec();
     while (query.next()) {

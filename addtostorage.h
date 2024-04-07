@@ -27,6 +27,7 @@ private slots:
 
 private:
     Ui::addToStorage *ui;
+    QSqlDatabase database;
 };
 
 #endif // ADDTOSTORAGE_H
