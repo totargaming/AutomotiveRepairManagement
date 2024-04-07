@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     addtostorage.cpp \
+    car.cpp \
     entitylist.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     SQLheader.h \
     addtostorage.h \
+    car.h \
     entitylist.h \
     mainwindow.h \
     partupdate.h \

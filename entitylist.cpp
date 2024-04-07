@@ -6,6 +6,7 @@ EntityList::EntityList(QWidget *parent)
     , ui(new Ui::EntityList)
 {
     ui->setupUi(this);
+    database = QSqlDatabase::database("DB");
 }
 
 EntityList::~EntityList()

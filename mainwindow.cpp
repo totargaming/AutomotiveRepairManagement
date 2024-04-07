@@ -3,7 +3,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow),storage_ptr(new Storage()), entityList_ptr(new EntityList())
+    , ui(new Ui::MainWindow),storage_ptr(new Storage()), car_ptr(new Car())
 {
     ui->setupUi(this);
 
@@ -53,6 +53,15 @@ void MainWindow::on_Storage_clicked()
 
 void MainWindow::on_Task_clicked()
 {
-    entityList_ptr->show();
+
+}
+
+
+
+
+void MainWindow::on_Car_clicked()
+{
+    car_ptr->setWindowTitle("Car");
+    car_ptr->show();
 }
 

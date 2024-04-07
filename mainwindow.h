@@ -7,7 +7,8 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include "storage.h"
-#include "entitylist.h"
+#include "car.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -33,10 +34,13 @@ private slots:
 
     void on_Task_clicked();
 
+
+    void on_Car_clicked();
+
 private:
     Ui::MainWindow *ui;
     Storage* storage_ptr;
-    EntityList* entityList_ptr;
+    Car* car_ptr;
     QSqlDatabase database;
 };
 #endif // MAINWINDOW_H
