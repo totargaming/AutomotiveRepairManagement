@@ -39,8 +39,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QSqlDatabase database;
     Storage* storage_ptr;
     Car* car_ptr;
-    QSqlDatabase database;
 };
 #endif // MAINWINDOW_H

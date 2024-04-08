@@ -6,7 +6,7 @@ EntityList::EntityList(QWidget *parent)
     , ui(new Ui::EntityList)
 {
     ui->setupUi(this);
-    database = QSqlDatabase::database("DB");
+
 }
 
 EntityList::~EntityList()
@@ -41,8 +41,9 @@ void EntityList::on_nameSortBtn_clicked()
 }
 
 
-void EntityList::on_listWidget_itemClicked(QListWidgetItem *item)
+
+void EntityList::on_tableView_clicked(const QModelIndex &index)
 {
-    showInfo();
+    showInfo(index);
 }
 

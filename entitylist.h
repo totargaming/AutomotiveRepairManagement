@@ -2,7 +2,7 @@
 #define ENTITYLIST_H
 
 #include <QWidget>
-#include <QListWidget>
+#include <QTableWidget>
 #include <SQLheader.h>
 namespace Ui {
 class EntityList;
@@ -16,7 +16,8 @@ public:
     explicit EntityList(QWidget *parent = nullptr);
     virtual void add() = 0 ;
     virtual void remove() = 0;
-    virtual void showInfo() = 0;
+    virtual void showInfo(const QModelIndex &index) = 0;
+    virtual void loadList() = 0;
     virtual void idSort() = 0;
     virtual void nameSort() = 0;
 
@@ -33,11 +34,12 @@ public:
 
     void on_nameSortBtn_clicked();
 
-    void on_listWidget_itemClicked(QListWidgetItem *item);
+
+    void on_tableView_clicked(const QModelIndex &index);
 
 protected:
     Ui::EntityList *ui;
-    QSqlDatabase database;
+    QSqlQueryModel* model;
 };
 
 #endif // ENTITYLIST_H

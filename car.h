@@ -8,7 +8,8 @@ public:
      Car(QWidget *parent = nullptr);
     void add();
     void remove();
-    void showInfo();
+    void showInfo(const QModelIndex &index);
+    void loadList();
     void idSort();
     void nameSort();
      ~Car();

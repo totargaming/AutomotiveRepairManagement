@@ -16,19 +16,9 @@
   <widget class="QTextEdit" name="txtInfo">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>359</x>
      <y>10</y>
-     <width>180</width>
-     <height>360</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QListWidget" name="listWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>250</width>
+     <width>221</width>
      <height>360</height>
     </rect>
    </property>
@@ -36,7 +26,7 @@
   <widget class="QPushButton" name="removeBtn">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>270</x>
      <y>50</y>
      <width>80</width>
      <height>24</height>
@@ -49,7 +39,7 @@
   <widget class="QPushButton" name="addBtn">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>270</x>
      <y>10</y>
      <width>80</width>
      <height>24</height>
@@ -62,7 +52,7 @@
   <widget class="QPushButton" name="idSortBtn">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>270</x>
      <y>90</y>
      <width>80</width>
      <height>24</height>
@@ -75,7 +65,7 @@
   <widget class="QPushButton" name="nameSortBtn">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>270</x>
      <y>130</y>
      <width>80</width>
      <height>24</height>
@@ -84,6 +74,28 @@
    <property name="text">
     <string>Sort by Name</string>
    </property>
+  </widget>
+  <widget class="QTableView" name="tableView">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>11</y>
+     <width>251</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <property name="showGrid">
+    <bool>false</bool>
+   </property>
+   <property name="sortingEnabled">
+    <bool>false</bool>
+   </property>
+   <attribute name="horizontalHeaderStretchLastSection">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
   </widget>
  </widget>
  <resources/>

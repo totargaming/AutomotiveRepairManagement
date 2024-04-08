@@ -3,19 +3,21 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow),storage_ptr(new Storage()), car_ptr(new Car())
-{
+    , ui(new Ui::MainWindow){
     ui->setupUi(this);
-
     database = QSqlDatabase::addDatabase("QSQLITE", "DB");
     database.setDatabaseName("E:/Workspace/AutomotiveRepairManagement/database.db");
     // database.setDatabaseName("/mnt/nvme0n1p5/Workspace/AutomotiveRepairManagement/database.db");
     if(!database.open()){
-        qDebug() << "Error: Unable to open database..";
+        qDebug() << "MainWindow: Error: Unable to open database..";
+        return; // return from the constructor if the database connection fails
     }
     else{
-        qDebug() << "Database open successfully..";
+        qDebug() << "MainWindow: Database open successfully..";
     }
+    storage_ptr = new Storage();
+    car_ptr = new Car();
+
 }
 
 MainWindow::~MainWindow()
