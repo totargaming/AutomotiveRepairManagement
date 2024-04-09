@@ -7,15 +7,13 @@ PartUpdate::PartUpdate(QWidget *parent)
 {
     ui->setupUi(this);
     database = QSqlDatabase::database("DB");
-    qDebug() << "Successfully initialized database in PartUpdate";
+    qDebug() << "PartUpdate: Successfully initialized database in PartUpdate";
     loadBox();
     connect(ui->removeList, SIGNAL(currentTextChanged(const QString &)), this, SLOT(on_removeList_currentTextChanged(const QString &)));
-
 }
 
 PartUpdate::~PartUpdate()
 {
-
     delete ui;
 }
 
@@ -27,6 +25,7 @@ bool PartUpdate::validateUserInput() {
     }
     return true;
 }
+
 void PartUpdate::loadBox() {
     ui->removeList->clear();
     QSqlQuery query(database);
@@ -34,11 +33,10 @@ void PartUpdate::loadBox() {
     query.exec();
     while(query.next()){
         ui->removeList->addItem(query.value(0).toString());
-        qDebug() << "Filling removeList" << query.value(0).toString();
+        qDebug() << "PartUpdate: Filling removeList" << query.value(0).toString();
     }
-    qDebug() << query.lastQuery();
-    qDebug() << query.lastError().text();
-
+    qDebug() << "PartUpdate: Last query" << query.lastQuery();
+    qDebug() << "PartUpdate: Last error" << query.lastError().text();
 }
 
 void PartUpdate::showEvent(QShowEvent *event)
@@ -58,17 +56,15 @@ void PartUpdate::on_deleteBtn_clicked()
     query.prepare("DELETE FROM Storage WHERE name = :name");
     query.bindValue(":name", selectedItem);
     if (query.exec()) {
-        qDebug() << "Item deleted successfully";
+        qDebug() << "PartUpdate: Item deleted successfully";
         QMessageBox::information(this, "Success", "Item deleted successfully");
     } else {
-        qDebug() << "Failed to delete item: " << query.lastError().text();
+        qDebug() << "PartUpdate: Failed to delete item" << query.lastError().text();
         QMessageBox::critical(this, "Error", "Failed to delete item: " + query.lastError().text());
     }
     loadBox(); // Refresh the combo box
     emit partUpdated();
-
 }
-
 
 void PartUpdate::on_updateBtn_clicked()
 {
@@ -83,19 +79,15 @@ void PartUpdate::on_updateBtn_clicked()
     query.bindValue(":name", selectedItem);
     query.bindValue(":quantity", newQuantity);
     if (query.exec()) {
-        qDebug() << "Item updated successfully";
+        qDebug() << "PartUpdate: Item updated successfully";
         QMessageBox::information(this, "Success", "Item updated successfully");
     } else {
-        qDebug() << "Failed to update item: " << query.lastError().text();
+        qDebug() << "PartUpdate: Failed to update item" << query.lastError().text();
         QMessageBox::critical(this, "Error", "Failed to update item: " + query.lastError().text());
     }
     loadBox(); // Refresh the combo box
     emit partUpdated();
-
 }
-
-
-
 
 void PartUpdate::on_removeList_currentTextChanged(const QString &text)
 {
@@ -108,4 +100,3 @@ void PartUpdate::on_removeList_currentTextChanged(const QString &text)
         ui->quantityReport->setText("Last updated quantity: " + QString::number(quantity));
     }
 }
-

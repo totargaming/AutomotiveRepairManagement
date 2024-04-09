@@ -1,56 +1,59 @@
 #include "car.h"
 #include "ui_entitylist.h"
+
 Car::Car(QWidget* parent): EntityList(parent){
+    qDebug() << "Car: Initializing Car";
     loadList();
 }
+
 void Car::add() {
-
+    qDebug() << "Car: add() called";
 }
-void Car::remove() {
 
+void Car::remove() {
+    qDebug() << "Car: remove() called";
 }
 
 void Car::loadList() {
-    qDebug() << "Entering loadList";
+    qDebug() << "Car: Entering loadList";
     QSqlDatabase database = QSqlDatabase::database("DB");
     if (!database.isOpen()) {
-        qDebug() << "Database is not open!";
+        qDebug() << "Car: Database is not open!";
         return;
     }
     model = new QSqlQueryModel();
     model->setQuery("SELECT VehicleID, Model FROM Vehicle", database);
     ui->tableView->setModel(model);
-    qDebug() << "Exiting loadList";
+    qDebug() << "Car: Exiting loadList";
 }
 
 void Car::idSort() {
-    qDebug() << "Entering idSort";
+    qDebug() << "Car: Entering idSort";
     QSqlDatabase database = QSqlDatabase::database("DB");
     model = new QSqlQueryModel();
     model->setQuery("SELECT VehicleID, Model FROM Vehicle ORDER BY VehicleID", database);
     ui->tableView->setModel(model);
-    qDebug() << "Exiting idSort";
+    qDebug() << "Car: Exiting idSort";
 }
 
 void Car::nameSort() {
-    qDebug() << "Entering nameSort";
+    qDebug() << "Car: Entering nameSort";
     QSqlDatabase database = QSqlDatabase::database("DB");
     model = new QSqlQueryModel();
     model->setQuery("SELECT VehicleID, Model FROM Vehicle ORDER BY Model", database);
     ui->tableView->setModel(model);
-    qDebug() << "Exiting nameSort";
+    qDebug() << "Car: Exiting nameSort";
 }
 
 void Car::showInfo(const QModelIndex &index) {
-    qDebug() << "Entering showInfo";
-
+    qDebug() << "Car: Entering showInfo";
 
     int row = index.row();
     QString vehicleId = ui->tableView->model()->data(ui->tableView->model()->index(row, 0)).toString();
 
     QSqlDatabase database = QSqlDatabase::database("DB");
     if (!database.isOpen()) {
-        qDebug() << "Database is not open!";
+        qDebug() << "Car: Database is not open!";
         return;
     }
 
@@ -58,7 +61,7 @@ void Car::showInfo(const QModelIndex &index) {
     query.prepare("SELECT * FROM Vehicle WHERE VehicleID = :vehicleId");
     query.bindValue(":vehicleId", vehicleId);
     if (!query.exec()) {
-        qDebug() << "Failed to execute query: " << query.lastError();
+        qDebug() << "Car: Failed to execute query" << query.lastError();
         return;
     }
 
@@ -73,8 +76,9 @@ void Car::showInfo(const QModelIndex &index) {
         ui->txtInfo->setText("Vehicle ID: " + vehicleId + "\nModel: " + model + "\nBrand: " + brand + "\nDate Assigned: " + dateAssigned + "\nAssigned: " + assigned + "\nDescription: " + description + "\nUser ID: " + userId);
     }
 
-    qDebug() << "Exiting showInfo";
+    qDebug() << "Car: Exiting showInfo";
 }
-Car::~Car() {
 
+Car::~Car() {
+    qDebug() << "Car: Destructor called";
 }
