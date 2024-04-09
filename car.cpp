@@ -4,10 +4,14 @@
 Car::Car(QWidget* parent): EntityList(parent){
     qDebug() << "Car: Initializing Car";
     loadList();
+    addToCar_ptr = new AddToCar();
+    connect(addToCar_ptr, &AddToCar::carAdded, this, &Car::loadList);
 }
 
 void Car::add() {
     qDebug() << "Car: add() called";
+    addToCar_ptr->setWindowTitle("Car: Registeration");
+    addToCar_ptr->show();
 }
 
 void Car::remove() {
@@ -61,7 +65,7 @@ void Car::showInfo(const QModelIndex &index) {
     query.prepare("SELECT * FROM Vehicle WHERE VehicleID = :vehicleId");
     query.bindValue(":vehicleId", vehicleId);
     if (!query.exec()) {
-        qDebug() << "Car: Failed to execute query" << query.lastError();
+        qDebug() << "Car: Failed to execute query(1)" << query.lastError();
         return;
     }
 
@@ -69,11 +73,26 @@ void Car::showInfo(const QModelIndex &index) {
         QString model = query.value("Model").toString();
         QString brand = query.value("Brand").toString();
         QString dateAssigned = query.value("DateAssigned").toString();
-        QString assigned = query.value("Assigned").toString();
+
+        QString assigned = (query.value("Assigned").toInt() == 1) ? "Yes" : "No";
         QString description = query.value("Description").toString();
         QString userId = query.value("UserID").toString();
 
-        ui->txtInfo->setText("Vehicle ID: " + vehicleId + "\nModel: " + model + "\nBrand: " + brand + "\nDate Assigned: " + dateAssigned + "\nAssigned: " + assigned + "\nDescription: " + description + "\nUser ID: " + userId);
+        QSqlQuery userQuery(database);
+        userQuery.prepare("SELECT Name FROM Customer WHERE UserID = :userId");
+        userQuery.bindValue(":userId", userId);
+        if (!userQuery.exec()) {
+            qDebug() << "Car: Failed to execute user query(2)" << userQuery.lastError();
+            return;
+        }
+
+        QString username;
+
+        if (userQuery.next()) {
+            username = userQuery.value("Name").toString();
+        }
+
+        ui->txtInfo->setText("Vehicle ID: " + vehicleId + "\nModel: " + model + "\nBrand: " + brand + "\nDescription: " + description + "\nUsername: " + username + "\nAssigned: " + assigned + "\nDate Assigned: " + dateAssigned);
     }
 
     qDebug() << "Car: Exiting showInfo";
@@ -81,4 +100,5 @@ void Car::showInfo(const QModelIndex &index) {
 
 Car::~Car() {
     qDebug() << "Car: Destructor called";
+    delete addToCar_ptr;
 }

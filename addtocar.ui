@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddToCar</class>
+ <widget class="QDialog" name="AddToCar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>362</width>
+    <height>336</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Add To Car</string>
+  </property>
+  <widget class="QLabel" name="modelLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>80</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Model:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtModel">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>20</y>
+     <width>200</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="brandLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>80</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Brand:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtBrand">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>60</y>
+     <width>200</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="descriptionLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>80</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Description:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txtDescription">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>100</y>
+     <width>200</width>
+     <height>80</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="customerNameLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>200</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Customer Name:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtCustomerName">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>200</y>
+     <width>200</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="phoneLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>240</y>
+     <width>80</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Phone:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtPhone">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>240</y>
+     <width>200</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addBtn">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>290</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Register</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

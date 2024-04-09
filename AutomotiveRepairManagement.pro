@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addtocar.cpp \
     addtostorage.cpp \
     car.cpp \
     entitylist.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 
 HEADERS += \
     SQLheader.h \
+    addtocar.h \
     addtostorage.h \
     car.h \
     entitylist.h \
@@ -29,6 +31,7 @@ HEADERS += \
     validation.h
 
 FORMS += \
+    addtocar.ui \
     addtostorage.ui \
     entitylist.ui \
     mainwindow.ui \
