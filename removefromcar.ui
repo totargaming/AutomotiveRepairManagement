@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PartUpdate</class>
- <widget class="QDialog" name="PartUpdate">
+ <class>RemoveFromCar</class>
+ <widget class="QDialog" name="RemoveFromCar">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>490</width>
-    <height>176</height>
+    <width>383</width>
+    <height>269</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="quantityReport">
+  <widget class="QLabel" name="idReport">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Last updated quantity: </string>
+    <string>ID: </string>
    </property>
   </widget>
   <widget class="QComboBox" name="removeList">
@@ -36,53 +36,30 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSpinBox" name="quantitySelect">
+  <widget class="QPushButton" name="removeBtn">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>20</y>
-     <width>48</width>
-     <height>29</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="updateBtn">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>60</y>
-     <width>150</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Update</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="quantityLabel">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>20</y>
-     <width>51</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Quantity:</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="deleteBtn">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
+     <x>220</x>
      <y>20</y>
      <width>150</width>
      <height>30</height>
     </rect>
    </property>
    <property name="text">
-    <string>Delete</string>
+    <string>Remove</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="customerNameReport">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>171</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Customer Name: </string>
    </property>
   </widget>
  </widget>

@@ -16,6 +16,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     partupdate.cpp \
+    removefromcar.cpp \
     storage.cpp \
     validation.cpp
 
@@ -27,6 +28,7 @@ HEADERS += \
     entitylist.h \
     mainwindow.h \
     partupdate.h \
+    removefromcar.h \
     storage.h \
     validation.h
 
@@ -36,6 +38,7 @@ FORMS += \
     entitylist.ui \
     mainwindow.ui \
     partupdate.ui \
+    removefromcar.ui \
     storage.ui
 
 # Default rules for deployment.

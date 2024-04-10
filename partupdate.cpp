@@ -7,9 +7,12 @@ PartUpdate::PartUpdate(QWidget *parent)
 {
     ui->setupUi(this);
     database = QSqlDatabase::database("DB");
-    qDebug() << "PartUpdate: Successfully initialized database in PartUpdate";
+    if (!database.isValid() || !database.isOpen()) {
+        qDebug() << "RemoveFromCar: Failed to initialize database";
+        return;
+    }
+    qDebug() << "RemoveFromCar: Successfully initialized database";
     loadBox();
-    connect(ui->removeList, SIGNAL(currentTextChanged(const QString &)), this, SLOT(on_removeList_currentTextChanged(const QString &)));
 }
 
 PartUpdate::~PartUpdate()

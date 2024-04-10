@@ -5,17 +5,21 @@ Car::Car(QWidget* parent): EntityList(parent){
     qDebug() << "Car: Initializing Car";
     loadList();
     addToCar_ptr = new AddToCar();
+    removeFromCar_ptr = new RemoveFromCar();
     connect(addToCar_ptr, &AddToCar::carAdded, this, &Car::loadList);
+    connect(removeFromCar_ptr, &RemoveFromCar::carRemoved, this, &Car::loadList);
 }
 
 void Car::add() {
     qDebug() << "Car: add() called";
-    addToCar_ptr->setWindowTitle("Car: Registeration");
+    addToCar_ptr->setWindowTitle("Car: Register");
     addToCar_ptr->show();
 }
 
 void Car::remove() {
     qDebug() << "Car: remove() called";
+    removeFromCar_ptr->setWindowTitle("Car: Remove");
+    removeFromCar_ptr->show();
 }
 
 void Car::loadList() {

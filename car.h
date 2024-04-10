@@ -2,6 +2,7 @@
 #define CAR_H
 #include "entitylist.h"
 #include "addtocar.h"
+#include "removefromcar.h"
 class Car : public EntityList
 {
 public:
@@ -15,6 +16,7 @@ public:
      ~Car();
 private:
      AddToCar* addToCar_ptr;
+    RemoveFromCar* removeFromCar_ptr;
 };
 
 #endif // CAR_H
