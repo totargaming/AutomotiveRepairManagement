@@ -12,11 +12,13 @@ SOURCES += \
     addtocar.cpp \
     addtostorage.cpp \
     car.cpp \
+    customer.cpp \
     entitylist.cpp \
     main.cpp \
     mainwindow.cpp \
     partupdate.cpp \
     removefromcar.cpp \
+    removefromcustomer.cpp \
     storage.cpp \
     validation.cpp
 
@@ -25,10 +27,12 @@ HEADERS += \
     addtocar.h \
     addtostorage.h \
     car.h \
+    customer.h \
     entitylist.h \
     mainwindow.h \
     partupdate.h \
     removefromcar.h \
+    removefromcustomer.h \
     storage.h \
     validation.h
 
@@ -39,6 +43,7 @@ FORMS += \
     mainwindow.ui \
     partupdate.ui \
     removefromcar.ui \
+    removefromcustomer.ui \
     storage.ui
 
 # Default rules for deployment.

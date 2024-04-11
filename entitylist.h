@@ -20,7 +20,6 @@ public:
     virtual void loadList() = 0;
     virtual void idSort() = 0;
     virtual void nameSort() = 0;
-
     virtual ~EntityList();
 
   private slots:

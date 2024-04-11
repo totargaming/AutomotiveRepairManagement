@@ -8,6 +8,7 @@
 #include <QScreen>
 #include "storage.h"
 #include "car.h"
+#include "customer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -42,5 +43,6 @@ private:
     QSqlDatabase database;
     Storage* storage_ptr;
     Car* car_ptr;
+    Customer* customer_ptr;
 };
 #endif // MAINWINDOW_H

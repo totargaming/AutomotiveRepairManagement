@@ -16,7 +16,6 @@ EntityList::~EntityList()
 
 
 
-
 void EntityList::on_addBtn_clicked()
 {
     add();

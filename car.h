@@ -10,12 +10,13 @@ public:
     void add();
     void remove();
     void showInfo(const QModelIndex &index);
+
     void loadList();
     void idSort();
     void nameSort();
      ~Car();
 private:
-     AddToCar* addToCar_ptr;
+    AddToCar* addToCar_ptr;
     RemoveFromCar* removeFromCar_ptr;
 };
 

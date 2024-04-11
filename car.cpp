@@ -3,12 +3,14 @@
 
 Car::Car(QWidget* parent): EntityList(parent){
     qDebug() << "Car: Initializing Car";
+    ui->nameSortBtn->setText("Load by Model");
     loadList();
     addToCar_ptr = new AddToCar();
     removeFromCar_ptr = new RemoveFromCar();
     connect(addToCar_ptr, &AddToCar::carAdded, this, &Car::loadList);
     connect(removeFromCar_ptr, &RemoveFromCar::carRemoved, this, &Car::loadList);
 }
+
 
 void Car::add() {
     qDebug() << "Car: add() called";
@@ -105,4 +107,5 @@ void Car::showInfo(const QModelIndex &index) {
 Car::~Car() {
     qDebug() << "Car: Destructor called";
     delete addToCar_ptr;
+    delete removeFromCar_ptr;
 }

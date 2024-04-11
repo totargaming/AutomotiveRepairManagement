@@ -16,9 +16,9 @@
   <widget class="QTextEdit" name="txtInfo">
    <property name="geometry">
     <rect>
-     <x>359</x>
+     <x>369</x>
      <y>10</y>
-     <width>221</width>
+     <width>211</width>
      <height>360</height>
     </rect>
    </property>
@@ -28,7 +28,7 @@
     <rect>
      <x>270</x>
      <y>50</y>
-     <width>80</width>
+     <width>91</width>
      <height>24</height>
     </rect>
    </property>
@@ -41,7 +41,7 @@
     <rect>
      <x>270</x>
      <y>10</y>
-     <width>80</width>
+     <width>91</width>
      <height>24</height>
     </rect>
    </property>
@@ -54,12 +54,12 @@
     <rect>
      <x>270</x>
      <y>90</y>
-     <width>80</width>
+     <width>91</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
-    <string>Sort by ID</string>
+    <string>Load by ID</string>
    </property>
   </widget>
   <widget class="QPushButton" name="nameSortBtn">
@@ -67,12 +67,12 @@
     <rect>
      <x>270</x>
      <y>130</y>
-     <width>80</width>
-     <height>24</height>
+     <width>91</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Sort by Name</string>
+    <string>Load by Name</string>
    </property>
   </widget>
   <widget class="QTableView" name="tableView">

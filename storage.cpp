@@ -26,29 +26,16 @@ Storage::~Storage()
 
 void Storage::loadAll() {
     qDebug() << "Storage: Entering loadAll";
-    QSqlDatabase db = QSqlDatabase::database("DB");
-    if (!db.isOpen()) {
-        qDebug() << "Storage: Database not open!";
+    QSqlDatabase database = QSqlDatabase::database("DB");
+    if (!database.isOpen()) {
+        qDebug() << "Storage: Database is not open!";
         return;
-    }
-
-    if (model == nullptr) {
-        model = new QSqlQueryModel();
-    }
-
-    model->setQuery("SELECT * FROM Storage", db);
-    if (model->lastError().isValid()) {
-        qDebug() << "Storage: Failed to execute query: " << model->lastError();
-        return;
-    }
-
-    if (ui == nullptr || ui->tableView == nullptr) {
-        qDebug() << "Storage: UI or tableView is null!";
-        return;
-    }
+    model = new QSqlQueryModel();
+    model->setQuery("SELECT Name, Quantity FROM Storage", database);
 
     ui->tableView->setModel(model);
     qDebug() << "Storage: Exiting loadAll";
+}
 }
 
 void Storage::on_searchBtn_clicked()

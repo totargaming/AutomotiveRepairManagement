@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
     storage_ptr = new Storage();
     car_ptr = new Car();
+    customer_ptr = new Customer();
 
 }
 
@@ -26,13 +27,15 @@ MainWindow::~MainWindow()
     QSqlDatabase::removeDatabase(database.connectionName());
     delete ui;
     delete storage_ptr;
+    delete car_ptr;
+    delete customer_ptr;
 }
 
 void MainWindow::on_Customer_clicked()
 {
-
+    customer_ptr->setWindowTitle("Customer");
+    customer_ptr->show();
 }
-
 
 void MainWindow::on_Maintenance_clicked()
 {
@@ -57,7 +60,6 @@ void MainWindow::on_Task_clicked()
 {
 
 }
-
 
 
 
