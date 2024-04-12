@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     addtocar.cpp \
+    addtostaff.cpp \
     addtostorage.cpp \
     car.cpp \
     customer.cpp \
@@ -19,12 +20,14 @@ SOURCES += \
     partupdate.cpp \
     removefromcar.cpp \
     removefromcustomer.cpp \
+    staff.cpp \
     storage.cpp \
     validation.cpp
 
 HEADERS += \
     SQLheader.h \
     addtocar.h \
+    addtostaff.h \
     addtostorage.h \
     car.h \
     customer.h \
@@ -33,11 +36,13 @@ HEADERS += \
     partupdate.h \
     removefromcar.h \
     removefromcustomer.h \
+    staff.h \
     storage.h \
     validation.h
 
 FORMS += \
     addtocar.ui \
+    addtostaff.ui \
     addtostorage.ui \
     entitylist.ui \
     mainwindow.ui \

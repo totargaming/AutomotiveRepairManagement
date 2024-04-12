@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     storage_ptr = new Storage();
     car_ptr = new Car();
     customer_ptr = new Customer();
+    staff_ptr = new Staff();
 
 }
 
@@ -45,7 +46,8 @@ void MainWindow::on_Maintenance_clicked()
 
 void MainWindow::on_Staff_clicked()
 {
-
+    staff_ptr->setWindowTitle("Staff");
+    staff_ptr->show();
 }
 
 
