@@ -10,6 +10,7 @@
 #include "car.h"
 #include "customer.h"
 #include "staff.h"
+#include "maintenance.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -46,5 +47,6 @@ private:
     Car* car_ptr;
     Customer* customer_ptr;
     Staff* staff_ptr;
+    Maintenance* maintenance_ptr;
 };
 #endif // MAINWINDOW_H

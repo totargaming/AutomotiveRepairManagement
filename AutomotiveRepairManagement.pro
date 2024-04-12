@@ -16,6 +16,7 @@ SOURCES += \
     customer.cpp \
     entitylist.cpp \
     main.cpp \
+    maintenance.cpp \
     mainwindow.cpp \
     partupdate.cpp \
     removefromcar.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     car.h \
     customer.h \
     entitylist.h \
+    maintenance.h \
     mainwindow.h \
     partupdate.h \
     removefromcar.h \
@@ -45,6 +47,7 @@ FORMS += \
     addtostaff.ui \
     addtostorage.ui \
     entitylist.ui \
+    maintenance.ui \
     mainwindow.ui \
     partupdate.ui \
     removefromcar.ui \
