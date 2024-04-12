@@ -66,7 +66,7 @@ void AddToCar::on_addBtn_clicked() {
     QSqlQuery query(database);
 
     // Insert into Vehicle table
-    query.prepare("INSERT INTO Vehicle (Model, Brand, DateAssigned, Assigned, Description) VALUES (:Model, :Brand, 'Not Assigned', '0', :Description)");
+    query.prepare("INSERT INTO Vehicle (Model, Brand, DateAssigned, Assigned, Description) VALUES (:Model, :Brand, 'Not Assigned', 0, :Description)");
     query.bindValue(":Model", model);
     query.bindValue(":Brand", brand);
     query.bindValue(":Description", description);

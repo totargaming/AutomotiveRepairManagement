@@ -35,6 +35,7 @@ bool AddToStaff::validateUserInput() {
             return false;
         }
     }
+    return true;
 }
 void AddToStaff::reset() {
     ui->txtName->clear();
@@ -44,6 +45,24 @@ void AddToStaff::reset() {
 
 void AddToStaff::on_addBtn_clicked()
 {
+    if (!validateUserInput()) {
+        return;
+    }
+    QString name = ui->txtName->text();
+    QString phone = ui->txtPhone->text();
+    int wage = ui->txtWage->text().toInt();
+    QSqlQuery query(database);
+    query.prepare("INSERT INTO Staff (Name, Assigned, MaintenanceID, Phone, Wage) VALUES (:Name, 0,NULL, :Phone, :Wage)");
+    query.bindValue(":Name", name);
+    query.bindValue(":Phone", phone);
+    query.bindValue(":Wage", wage);
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Database Error", query.lastError().text());
+        return;
+    }
+    emit staffAdded();
+    QMessageBox::information(this, "Success", "Staff information added successfully.");
+
     reset();
 }
 
