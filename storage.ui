@@ -45,6 +45,9 @@
      <height>231</height>
     </rect>
    </property>
+   <property name="showGrid">
+    <bool>false</bool>
+   </property>
    <attribute name="horizontalHeaderCascadingSectionResizes">
     <bool>true</bool>
    </attribute>
@@ -53,6 +56,9 @@
    </attribute>
    <attribute name="horizontalHeaderStretchLastSection">
     <bool>true</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
    </attribute>
   </widget>
   <widget class="QLabel" name="label">

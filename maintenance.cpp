@@ -26,7 +26,7 @@ void Maintenance::loadAll() {
     }
 
     QSqlQuery query(database);
-    query.prepare("SELECT MaintenanceID FROM Maintenance WHERE date(StartDate) = date(:selectedDate)");
+    query.prepare("SELECT Model FROM Vehicle WHERE date(StartDate) = date(:selectedDate)");
     query.bindValue(":selectedDate", selectedDate);
     if (!query.exec()) {
         qDebug() << "Maintenance: Failed to execute query" << query.lastError();
@@ -37,7 +37,7 @@ void Maintenance::loadAll() {
     startDateModel->setQuery(query);
     ui->startDateTable->setModel(startDateModel);
 
-    query.prepare("SELECT MaintenanceID FROM Maintenance WHERE date(Deadline) = date(:selectedDate)");
+    query.prepare("SELECT Model FROM Vehicle WHERE date(Deadline) = date(:selectedDate)");
     query.bindValue(":selectedDate", selectedDate);
     if (!query.exec()) {
         qDebug() << "Maintenance: Failed to execute query" << query.lastError();

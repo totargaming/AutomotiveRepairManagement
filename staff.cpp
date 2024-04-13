@@ -4,7 +4,9 @@ Staff::Staff(QWidget *parent): EntityList(parent) {
     qDebug() << "Staff: Initializing Staff";
     loadList();
     addToStaff_ptr = new AddToStaff();
+    removeFromStaff_ptr = new RemoveFromStaff();
     connect(addToStaff_ptr, &AddToStaff::staffAdded, this, &Staff::loadList);
+    connect(removeFromStaff_ptr, &RemoveFromStaff::staffRemoved, this, &Staff::loadList);
 
 }
 void Staff::add() {
@@ -14,7 +16,9 @@ void Staff::add() {
 }
 
 void Staff::remove() {
-
+    qDebug() << "Staff: remove() called";
+    removeFromStaff_ptr->setWindowTitle("Staff: Fire");
+    removeFromStaff_ptr->show();
 }
 
 void Staff::showInfo(const QModelIndex &index) {
@@ -42,9 +46,27 @@ void Staff::showInfo(const QModelIndex &index) {
         QString phone = query.value("Phone").toString();
         int wage = query.value("Wage").toInt();
         QString assigned = (query.value("Assigned").toInt() == 1) ? "Yes" : "No";
-        QString maintenanceId = query.value("MaintenanceID").isNull() ? "Not assigned" : query.value("MaintenanceID").toString();
+        QString vehicleId = query.value("VehicleID").isNull() ? "Not assigned" : query.value("VehicleID").toString();
 
-        ui->txtInfo->setText("Staff ID: " + staffId + "\nName: " + name + "\nPhone: " + phone + "\nWage: " + QString::number(wage) + "\nAssigned: " + assigned + "\nMaintenance ID: " + maintenanceId);
+        // Fetch the model from the Vehicle table
+        QString model;
+        if (vehicleId != "Not assigned") {
+            QSqlQuery vehicleQuery(database);
+            vehicleQuery.prepare("SELECT Model FROM Vehicle WHERE VehicleID = :vehicleId");
+            vehicleQuery.bindValue(":vehicleId", vehicleId);
+            if (!vehicleQuery.exec()) {
+                qDebug() << "Staff: Failed to execute vehicle query" << vehicleQuery.lastError();
+                return;
+            }
+
+            if (vehicleQuery.next()) {
+                model = vehicleQuery.value("Model").toString();
+            }
+        } else {
+            model = "Not assigned";
+        }
+
+        ui->txtInfo->setText("Staff ID: " + staffId + "\nName: " + name + "\nPhone: " + phone + "\nWage: " + QString::number(wage) + "\nAssigned: " + assigned + "\nVehicle Model: " + model);
     }
 
     qDebug() << "Staff: Exiting showInfo";
@@ -84,4 +106,6 @@ void Staff::nameSort() {
 Staff::~Staff() {
     qDebug() << "Car: Destructor called";
     delete addToStaff_ptr;
+    delete removeFromStaff_ptr;
+
 }

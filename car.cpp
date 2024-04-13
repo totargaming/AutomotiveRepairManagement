@@ -78,9 +78,12 @@ void Car::showInfo(const QModelIndex &index) {
     if (query.next()) {
         QString model = query.value("Model").toString();
         QString brand = query.value("Brand").toString();
-        QString dateAssigned = query.value("DateAssigned").toString();
 
         QString assigned = (query.value("Assigned").toInt() == 1) ? "Yes" : "No";
+        QString scheduled = (query.value("Scheduled").toInt() == 1) ? "Yes" : "No";
+        QString finished = (query.value("Finished").toInt() == 1) ? "Yes" : "No";
+
+
         QString description = query.value("Description").toString();
         QString userId = query.value("UserID").toString();
 
@@ -92,13 +95,13 @@ void Car::showInfo(const QModelIndex &index) {
             return;
         }
 
-        QString username;
+        QString customerName;
 
         if (userQuery.next()) {
-            username = userQuery.value("Name").toString();
+            customerName = userQuery.value("Name").toString();
         }
 
-        ui->txtInfo->setText("Vehicle ID: " + vehicleId + "\nModel: " + model + "\nBrand: " + brand + "\nDescription: " + description + "\nUsername: " + username + "\nAssigned: " + assigned + "\nDate Assigned: " + dateAssigned);
+        ui->txtInfo->setText("Vehicle ID: " + vehicleId + "\nModel: " + model + "\nBrand: " + brand + "\nDescription: " + description + "\nUsername: " + customerName + "\nScheduled: " + scheduled+  "\nAssigned: " + assigned + "\nFinished: " + finished );
     }
 
     qDebug() << "Car: Exiting showInfo";

@@ -2,6 +2,7 @@
 #define STAFF_H
 #include "entitylist.h"
 #include "addtostaff.h"
+#include "removefromstaff.h"
 class Staff : public EntityList
 {
 public:
@@ -16,6 +17,7 @@ public:
     ~Staff();
 private:
     AddToStaff* addToStaff_ptr;
+    RemoveFromStaff* removeFromStaff_ptr;
 };
 
 #endif // STAFF_H

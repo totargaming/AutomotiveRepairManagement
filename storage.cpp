@@ -30,12 +30,12 @@ void Storage::loadAll() {
     if (!database.isOpen()) {
         qDebug() << "Storage: Database is not open!";
         return;
+    }
     model = new QSqlQueryModel();
     model->setQuery("SELECT Name, Quantity FROM Storage", database);
 
     ui->tableView->setModel(model);
     qDebug() << "Storage: Exiting loadAll";
-}
 }
 
 void Storage::on_searchBtn_clicked()
@@ -43,16 +43,22 @@ void Storage::on_searchBtn_clicked()
     qDebug() << "Storage: Entering on_searchBtn_clicked";
     QString partName = ui->input->text();
     qDebug() << "Part: " << partName;
-    QSqlDatabase db = QSqlDatabase::database("DB");
+    QSqlDatabase database = QSqlDatabase::database("DB");
 
-    if(model == NULL)
-        model = new QSqlQueryModel();
+    model = new QSqlQueryModel();
 
     if(partName.isEmpty()) {
         loadAll();
     }
     else {
-        model->setQuery("select * from Storage where name like '%" + partName + "%'", db);
+        QSqlQuery query(database);
+        query.prepare("SELECT * FROM Storage WHERE name LIKE :partName");
+        query.bindValue(":partName", "%" + partName + "%");
+        if (!query.exec()) {
+            qDebug() << "Storage: Failed to execute query" << query.lastError();
+            return;
+        }
+        model->setQuery(query);
         ui->tableView->setModel(model);
     }
     qDebug() << "Storage: Exiting on_searchBtn_clicked";

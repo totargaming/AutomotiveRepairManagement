@@ -21,6 +21,7 @@ SOURCES += \
     partupdate.cpp \
     removefromcar.cpp \
     removefromcustomer.cpp \
+    removefromstaff.cpp \
     staff.cpp \
     storage.cpp \
     validation.cpp
@@ -38,6 +39,7 @@ HEADERS += \
     partupdate.h \
     removefromcar.h \
     removefromcustomer.h \
+    removefromstaff.h \
     staff.h \
     storage.h \
     validation.h
@@ -52,6 +54,7 @@ FORMS += \
     partupdate.ui \
     removefromcar.ui \
     removefromcustomer.ui \
+    removefromstaff.ui \
     storage.ui
 
 # Default rules for deployment.
