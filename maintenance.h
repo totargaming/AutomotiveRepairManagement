@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "SQLheader.h"
 #include <QCalendarWidget>
+#include "addtomaintenance.h"
 namespace Ui {
 class Maintenance;
 }
@@ -31,8 +32,7 @@ private slots:
 private:
     Ui::Maintenance *ui;
     QCalendarWidget *calendar;
-    QSqlQueryModel *startDateModel;
-    QSqlQueryModel *deadlineModel;
+    AddToMaintenance* addToMaintenance_ptr;
 };
 
 #endif // MAINTENANCE_H

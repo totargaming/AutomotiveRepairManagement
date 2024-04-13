@@ -3,6 +3,7 @@
 #include "entitylist.h"
 #include "addtocar.h"
 #include "removefromcar.h"
+#include "QDate"
 class Car : public EntityList
 {
 public:

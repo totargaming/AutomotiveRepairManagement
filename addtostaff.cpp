@@ -52,7 +52,7 @@ void AddToStaff::on_addBtn_clicked()
     QString phone = ui->txtPhone->text();
     int wage = ui->txtWage->text().toInt();
     QSqlQuery query(database);
-    query.prepare("INSERT INTO Staff (Name, Assigned, MaintenanceID, Phone, Wage) VALUES (:Name, 0,NULL, :Phone, :Wage)");
+    query.prepare("INSERT INTO Staff (Name, Phone, Wage) VALUES (:Name, :Phone, :Wage)");
     query.bindValue(":Name", name);
     query.bindValue(":Phone", phone);
     query.bindValue(":Wage", wage);

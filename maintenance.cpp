@@ -8,12 +8,16 @@ Maintenance::Maintenance(QWidget *parent)
     ui->setupUi(this);
     calendar = ui->calendarWidget;
     loadAll();
+    addToMaintenance_ptr = new AddToMaintenance();
+    connect(addToMaintenance_ptr,&AddToMaintenance::assigned, this, &Maintenance::loadAll);
 
 }
 
 Maintenance::~Maintenance()
 {
     delete ui;
+    delete addToMaintenance_ptr;
+
 }
 
 void Maintenance::loadAll() {
@@ -33,7 +37,7 @@ void Maintenance::loadAll() {
         return;
     }
 
-    startDateModel = new QSqlQueryModel();
+    QSqlQueryModel* startDateModel = new QSqlQueryModel();
     startDateModel->setQuery(query);
     ui->startDateTable->setModel(startDateModel);
 
@@ -44,7 +48,7 @@ void Maintenance::loadAll() {
         return;
     }
 
-    deadlineModel = new QSqlQueryModel();
+    QSqlQueryModel* deadlineModel = new QSqlQueryModel();
     deadlineModel->setQuery(query);
     ui->deadlineTable->setModel(deadlineModel);
 
@@ -60,7 +64,8 @@ void Maintenance::on_calendarWidget_selectionChanged()
 
 void Maintenance::on_addBtn_clicked()
 {
-
+    addToMaintenance_ptr->setWindowTitle("Maintenance: Assign");
+    addToMaintenance_ptr->show();
 }
 
 

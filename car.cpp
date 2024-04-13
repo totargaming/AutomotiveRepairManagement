@@ -81,12 +81,27 @@ void Car::showInfo(const QModelIndex &index) {
 
         QString assigned = (query.value("Assigned").toInt() == 1) ? "Yes" : "No";
         QString scheduled = (query.value("Scheduled").toInt() == 1) ? "Yes" : "No";
+
         QString finished = (query.value("Finished").toInt() == 1) ? "Yes" : "No";
 
 
         QString description = query.value("Description").toString();
         QString userId = query.value("UserID").toString();
+        QString startDate = query.value("StartDate").toString();
+        if (startDate.isEmpty()) {
+            startDate = "Not scheduled";
+        } else {
+            // Convert to QDate and format it
+            startDate = QDate::fromString(startDate, "yyyy-MM-dd").toString("dd/MM/yyyy");
+        }
 
+        QString deadline = query.value("Deadline").toString();
+        if (deadline.isEmpty()) {
+            deadline = "Not scheduled";
+        } else {
+            // Convert to QDate and format it
+            deadline = QDate::fromString(deadline, "yyyy-MM-dd").toString("dd/MM/yyyy");
+        }
         QSqlQuery userQuery(database);
         userQuery.prepare("SELECT Name FROM Customer WHERE UserID = :userId");
         userQuery.bindValue(":userId", userId);
@@ -101,7 +116,7 @@ void Car::showInfo(const QModelIndex &index) {
             customerName = userQuery.value("Name").toString();
         }
 
-        ui->txtInfo->setText("Vehicle ID: " + vehicleId + "\nModel: " + model + "\nBrand: " + brand + "\nDescription: " + description + "\nUsername: " + customerName + "\nScheduled: " + scheduled+  "\nAssigned: " + assigned + "\nFinished: " + finished );
+        ui->txtInfo->setText("Vehicle ID: " + vehicleId + "\nModel: " + model + "\nBrand: " + brand + "\nDescription: " + description + "\nUsername: " + customerName + "\nScheduled: " + scheduled+  "\nAssigned: " + assigned + "\nFinished: " + finished + "\nStart Date: " + startDate + "\nDeadline: " + deadline);
     }
 
     qDebug() << "Car: Exiting showInfo";

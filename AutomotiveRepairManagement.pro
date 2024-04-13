@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     addtocar.cpp \
+    addtomaintenance.cpp \
     addtostaff.cpp \
     addtostorage.cpp \
     car.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 HEADERS += \
     SQLheader.h \
     addtocar.h \
+    addtomaintenance.h \
     addtostaff.h \
     addtostorage.h \
     car.h \
@@ -46,6 +48,7 @@ HEADERS += \
 
 FORMS += \
     addtocar.ui \
+    addtomaintenance.ui \
     addtostaff.ui \
     addtostorage.ui \
     entitylist.ui \
