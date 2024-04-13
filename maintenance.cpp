@@ -77,12 +77,89 @@ void Maintenance::on_removeBtn_clicked()
 
 void Maintenance::on_startDateTable_clicked(const QModelIndex &index)
 {
+    QString model = index.data().toString();
+    QSqlDatabase database = QSqlDatabase::database("DB");
+    if (!database.isOpen()) {
+        qDebug() << "Maintenance: Database is not open!";
+        return;
+    }
 
+    QSqlQuery query(database);
+    query.prepare("SELECT Vehicle.*, Staff.Name FROM Vehicle LEFT JOIN Staff ON Vehicle.StaffID = Staff.StaffID WHERE Model = :model AND date(StartDate) = date(:selectedDate)");
+    query.bindValue(":model", model);
+    query.bindValue(":selectedDate", calendar->selectedDate().toString("yyyy-MM-dd"));
+    if (!query.exec() || !query.next()) {
+        qDebug() << "Maintenance: Failed to execute query" << query.lastError();
+        return;
+    }
+
+    QString staff = query.value("Name").toString();
+    if (staff.isEmpty()) {
+        staff = "Not assigned";
+    }
+
+    QString dateAssigned = query.value("StartDate").toString();
+    if (!dateAssigned.isEmpty()) {
+        dateAssigned = QDate::fromString(dateAssigned, "yyyy-MM-dd").toString("dd/MM/yyyy");
+    }
+
+    QString deadline = query.value("Deadline").toString();
+    if (!deadline.isEmpty()) {
+        deadline = QDate::fromString(deadline, "yyyy-MM-dd").toString("dd/MM/yyyy");
+    }
+
+    QString assigned = query.value("Assigned").toBool() ? "Yes" : "No";
+    QString finished = query.value("Finished").toBool() ? "Yes" : "No";
+
+    QString dateRemaining;
+    if (!deadline.isEmpty()) {
+        dateRemaining = QString::number(QDate::currentDate().daysTo(QDate::fromString(deadline, "dd/MM/yyyy")));
+    }
+
+    ui->txtInfo->setText("Model: " + model + "\nStaff: " + staff + "\nDateAssigned: " + dateAssigned + "\nDeadline: " + deadline + "\nAssigned: " + assigned + "\nFinished: " + finished + "\nDateRemaining: " + dateRemaining);
 }
-
 
 void Maintenance::on_deadlineTable_clicked(const QModelIndex &index)
 {
+    QString model = index.data().toString();
+    QSqlDatabase database = QSqlDatabase::database("DB");
+    if (!database.isOpen()) {
+        qDebug() << "Maintenance: Database is not open!";
+        return;
+    }
 
+    QSqlQuery query(database);
+    query.prepare("SELECT Vehicle.*, Staff.Name FROM Vehicle LEFT JOIN Staff ON Vehicle.StaffID = Staff.StaffID WHERE Model = :model AND date(Deadline) = date(:selectedDate)");
+    query.bindValue(":model", model);
+    query.bindValue(":selectedDate", calendar->selectedDate().toString("yyyy-MM-dd"));
+    if (!query.exec() || !query.next()) {
+        qDebug() << "Maintenance: Failed to execute query" << query.lastError();
+        return;
+    }
+
+    QString staff = query.value("Name").toString();
+    if (staff.isEmpty()) {
+        staff = "Not assigned";
+    }
+
+    QString dateAssigned = query.value("StartDate").toString();
+    if (!dateAssigned.isEmpty()) {
+        dateAssigned = QDate::fromString(dateAssigned, "yyyy-MM-dd").toString("dd/MM/yyyy");
+    }
+
+    QString deadline = query.value("Deadline").toString();
+    if (!deadline.isEmpty()) {
+        deadline = QDate::fromString(deadline, "yyyy-MM-dd").toString("dd/MM/yyyy");
+    }
+
+    QString assigned = query.value("Assigned").toBool() ? "Yes" : "No";
+    QString finished = query.value("Finished").toBool() ? "Yes" : "No";
+
+    QString dateRemaining;
+    if (!deadline.isEmpty()) {
+        dateRemaining = QString::number(QDate::currentDate().daysTo(QDate::fromString(deadline, "dd/MM/yyyy")));
+    }
+
+    ui->txtInfo->setText("Model: " + model + "\nStaff: " + staff + "\nDateAssigned: " + dateAssigned + "\nDeadline: " + deadline + "\nAssigned: " + assigned + "\nFinished: " + finished + "\nDateRemaining: " + dateRemaining);
 }
 
