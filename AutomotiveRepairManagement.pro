@@ -15,9 +15,11 @@ SOURCES += \
     addtostorage.cpp \
     car.cpp \
     customer.cpp \
+    deliverytask.cpp \
     entitylist.cpp \
     main.cpp \
     maintenance.cpp \
+    maintenancetask.cpp \
     mainwindow.cpp \
     partupdate.cpp \
     removefromcar.cpp \
@@ -26,6 +28,7 @@ SOURCES += \
     removefromstaff.cpp \
     staff.cpp \
     storage.cpp \
+    tasklist.cpp \
     validation.cpp
 
 HEADERS += \
@@ -36,8 +39,10 @@ HEADERS += \
     addtostorage.h \
     car.h \
     customer.h \
+    deliverytask.h \
     entitylist.h \
     maintenance.h \
+    maintenancetask.h \
     mainwindow.h \
     partupdate.h \
     removefromcar.h \
@@ -46,6 +51,7 @@ HEADERS += \
     removefromstaff.h \
     staff.h \
     storage.h \
+    tasklist.h \
     validation.h
 
 FORMS += \

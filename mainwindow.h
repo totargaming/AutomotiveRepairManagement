@@ -11,7 +11,8 @@
 #include "customer.h"
 #include "staff.h"
 #include "maintenance.h"
-
+#include "maintenancetask.h"
+#include "deliverytask.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -48,5 +49,7 @@ private:
     Customer* customer_ptr;
     Staff* staff_ptr;
     Maintenance* maintenance_ptr;
+    MaintenanceTask* maintenanceTask_ptr;
+    DeliveryTask* deliveryTask_ptr;
 };
 #endif // MAINWINDOW_H

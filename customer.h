@@ -4,16 +4,17 @@
 #include "removefromcustomer.h"
 class Customer : public EntityList
 {
+    Q_OBJECT
 public:
     Customer(QWidget *parent = nullptr);
 
-    void add();
-    void remove();
-    void showInfo(const QModelIndex &index);
+    void add() override;
+    void remove() override;
+    void showInfo(const QModelIndex &index) override;
 
-    void loadList();
-    void idSort();
-    void nameSort();
+    void loadList() override;
+    void idSort() override;
+    void nameSort() override;
     ~Customer();
 private:
     RemoveFromCustomer* removeFromCustomer_ptr;

@@ -6,15 +6,16 @@
 #include "QDate"
 class Car : public EntityList
 {
+    Q_OBJECT
 public:
      Car(QWidget *parent = nullptr);
-    void add();
-    void remove();
-    void showInfo(const QModelIndex &index);
+    void add() override;
+    void remove() override;
+    void showInfo(const QModelIndex &index) override;
 
-    void loadList();
-    void idSort();
-    void nameSort();
+    void loadList() override;
+    void idSort() override;
+    void nameSort() override;
      ~Car();
 private:
     AddToCar* addToCar_ptr;

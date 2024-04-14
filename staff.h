@@ -5,15 +5,16 @@
 #include "removefromstaff.h"
 class Staff : public EntityList
 {
+    Q_OBJECT
 public:
     Staff(QWidget *parent = nullptr);
-    void add();
-    void remove();
-    void showInfo(const QModelIndex &index);
+    void add() override;
+    void remove() override;
+    void showInfo(const QModelIndex &index) override;
 
-    void loadList();
-    void idSort();
-    void nameSort();
+    void loadList() override;
+    void idSort() override;
+    void nameSort() override;
     ~Staff();
 private:
     AddToStaff* addToStaff_ptr;

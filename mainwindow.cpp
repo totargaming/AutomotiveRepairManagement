@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
     customer_ptr = new Customer();
     staff_ptr = new Staff();
     maintenance_ptr = new Maintenance();
+    maintenanceTask_ptr = new MaintenanceTask();
+    deliveryTask_ptr = new DeliveryTask();
 
 }
 
@@ -31,6 +33,10 @@ MainWindow::~MainWindow()
     delete storage_ptr;
     delete car_ptr;
     delete customer_ptr;
+    delete staff_ptr;
+    delete maintenance_ptr;
+    delete maintenanceTask_ptr;
+    delete deliveryTask_ptr;
 }
 
 void MainWindow::on_Customer_clicked()
@@ -62,7 +68,33 @@ void MainWindow::on_Storage_clicked()
 
 void MainWindow::on_Task_clicked()
 {
+    // Get the primary screen's geometry
+    QScreen* primaryScreen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = primaryScreen->geometry();
 
+    // Calculate the width, height, and positioning for both windows
+    int windowWidth = 604; // Adjust to your window width
+    int windowHeight = 396; // Adjust to your window height
+    int gap = 10; // Adjust the gap as needed
+
+    // Calculate the position for the first window (centered)
+    int x1 = (screenGeometry.width() - (windowWidth * 2 + gap)) / 2;
+    int y1 = (screenGeometry.height() - windowHeight) / 2;
+
+    // Calculate the position for the second window (next to the first window)
+    int x2 = x1 + windowWidth + gap;
+
+    // Set the geometry for the first window
+    maintenanceTask_ptr->setGeometry(x1, y1, windowWidth, windowHeight);
+
+    // Set the geometry for the second window
+    deliveryTask_ptr->setGeometry(x2, y1, windowWidth, windowHeight);
+
+    maintenanceTask_ptr->setWindowTitle("Maintenance Task Window");
+    deliveryTask_ptr->setWindowTitle("Delivery Task Window");
+
+    maintenanceTask_ptr->show();
+    deliveryTask_ptr->show();
 }
 
 
