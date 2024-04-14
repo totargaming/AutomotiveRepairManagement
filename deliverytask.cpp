@@ -12,6 +12,3 @@ QString DeliveryTask::taskType() {
 void DeliveryTask::remove() {
 
 }
-void DeliveryTask::add() {
-
-}

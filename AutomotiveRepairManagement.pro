@@ -13,6 +13,7 @@ SOURCES += \
     addtomaintenance.cpp \
     addtostaff.cpp \
     addtostorage.cpp \
+    addtotask.cpp \
     car.cpp \
     customer.cpp \
     deliverytask.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     addtomaintenance.h \
     addtostaff.h \
     addtostorage.h \
+    addtotask.h \
     car.h \
     customer.h \
     deliverytask.h \
@@ -59,6 +61,7 @@ FORMS += \
     addtomaintenance.ui \
     addtostaff.ui \
     addtostorage.ui \
+    addtotask.ui \
     entitylist.ui \
     maintenance.ui \
     mainwindow.ui \

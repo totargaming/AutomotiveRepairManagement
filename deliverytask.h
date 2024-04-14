@@ -7,7 +7,7 @@ public:
     DeliveryTask(QWidget* parent = nullptr);
     QString taskType() override;
     void remove() override;
-    void add() override;
+    void add() override {}
 
 };
 
