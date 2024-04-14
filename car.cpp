@@ -116,7 +116,7 @@ void Car::showInfo(const QModelIndex &index) {
             customerName = userQuery.value("Name").toString();
         }
 
-        ui->txtInfo->setText("Vehicle ID: " + vehicleId + "\nModel: " + model + "\nBrand: " + brand + "\nDescription: " + description + "\nUsername: " + customerName + "\nScheduled: " + scheduled+  "\nAssigned: " + assigned + "\nFinished: " + finished + "\nStart Date: " + startDate + "\nDeadline: " + deadline);
+        ui->txtInfo->setText("Vehicle ID: " + vehicleId + "\nModel: " + model + "\nBrand: " + brand + "\nDescription: " + description + "\nCustomer: " + customerName + "\nScheduled: " + scheduled+  "\nAssigned: " + assigned + "\nFinished: " + finished + "\nStart Date: " + startDate + "\nDeadline: " + deadline);
     }
 
     qDebug() << "Car: Exiting showInfo";

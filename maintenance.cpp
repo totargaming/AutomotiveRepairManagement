@@ -9,14 +9,16 @@ Maintenance::Maintenance(QWidget *parent)
     calendar = ui->calendarWidget;
     loadAll();
     addToMaintenance_ptr = new AddToMaintenance();
+    removeFromMaintenance_ptr = new RemoveFromMaintenance();
     connect(addToMaintenance_ptr,&AddToMaintenance::assigned, this, &Maintenance::loadAll);
-
+    connect(removeFromMaintenance_ptr,&RemoveFromMaintenance::maintenanceRemoved, this, &Maintenance::loadAll);
 }
 
 Maintenance::~Maintenance()
 {
     delete ui;
     delete addToMaintenance_ptr;
+    delete removeFromMaintenance_ptr;
 
 }
 
@@ -71,7 +73,8 @@ void Maintenance::on_addBtn_clicked()
 
 void Maintenance::on_removeBtn_clicked()
 {
-
+    removeFromMaintenance_ptr->setWindowTitle("Maintenance: Dismiss");
+    removeFromMaintenance_ptr->show();
 }
 
 

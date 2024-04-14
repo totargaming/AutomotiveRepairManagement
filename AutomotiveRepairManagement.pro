@@ -22,6 +22,7 @@ SOURCES += \
     partupdate.cpp \
     removefromcar.cpp \
     removefromcustomer.cpp \
+    removefrommaintenance.cpp \
     removefromstaff.cpp \
     staff.cpp \
     storage.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     partupdate.h \
     removefromcar.h \
     removefromcustomer.h \
+    removefrommaintenance.h \
     removefromstaff.h \
     staff.h \
     storage.h \
@@ -57,6 +59,7 @@ FORMS += \
     partupdate.ui \
     removefromcar.ui \
     removefromcustomer.ui \
+    removefrommaintenance.ui \
     removefromstaff.ui \
     storage.ui
 

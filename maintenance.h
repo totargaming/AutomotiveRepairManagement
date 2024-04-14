@@ -5,6 +5,7 @@
 #include "SQLheader.h"
 #include <QCalendarWidget>
 #include "addtomaintenance.h"
+#include "removefrommaintenance.h"
 namespace Ui {
 class Maintenance;
 }
@@ -33,6 +34,7 @@ private:
     Ui::Maintenance *ui;
     QCalendarWidget *calendar;
     AddToMaintenance* addToMaintenance_ptr;
+    RemoveFromMaintenance* removeFromMaintenance_ptr;
 };
 
 #endif // MAINTENANCE_H
