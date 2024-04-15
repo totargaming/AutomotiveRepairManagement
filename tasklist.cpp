@@ -2,10 +2,13 @@
 #include "ui_entitylist.h"
 TaskList::TaskList(QWidget* parent): EntityList(parent) {
     qDebug() << "TaskList: Initializing TaskList";
+    addToTask_ptr = new AddToTask();
+    connect(addToTask_ptr, &AddToTask::taskAdded, this, &TaskList::loadList);
 }
-// void TaskList::add() {
-
-// }
+void TaskList::add() {
+    addToTask_ptr->setWindowTitle("Maintenance Task: Assign");
+    addToTask_ptr->show();
+}
 
 // void TaskList::remove() {
 //     qDebug() << "TaskList: Entering remove";
@@ -203,5 +206,6 @@ void TaskList::nameSort(QString taskType) {
 }
 
 TaskList::~TaskList(){
+    delete addToTask_ptr;
 
 }

@@ -4,7 +4,7 @@
 DeliveryTask::DeliveryTask(QWidget* parent) : TaskList(parent) {
     ui->addBtn->setVisible(false);
     ui->removeBtn->setText("Car Delivered!");
-    loadList();
+    TaskList::loadList();
 }
 QString DeliveryTask::taskType() {
     return "Delivery";

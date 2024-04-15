@@ -85,10 +85,9 @@ void AddToMaintenance::on_addBtn_clicked() {
     if(!query.exec()) {
         QMessageBox::warning(this, "Database Error", "Failed to update vehicle");
         qDebug() << "AddToMaintenance: Failed to update vehicle";
-    } else {
-        qDebug() << "AddToMaintenance: Vehicle updated successfully";
-
+        return;
     }
+        QMessageBox::information(this, "Success", "Maintenance information added successfully.");
     loadBox(); // Refresh the combo box
     emit assigned();
 }

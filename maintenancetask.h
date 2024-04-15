@@ -1,7 +1,7 @@
 #ifndef MAINTENANCETASK_H
 #define MAINTENANCETASK_H
 #include "tasklist.h"
-#include "addtotask.h"
+
 class MaintenanceTask: public TaskList
 {
 public:
@@ -11,10 +11,9 @@ public:
     }
     QString taskType() override;
     void remove() override;
-    void add() override;
+    void changeToDelivery(const QModelIndex &index);
     ~MaintenanceTask();
-private:
-    AddToTask* addToTask_ptr;
+
 
 };
 

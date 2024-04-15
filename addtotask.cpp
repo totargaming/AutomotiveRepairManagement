@@ -60,11 +60,11 @@ bool AddToTask::validateUserInput() {
     return true;
 }
 
-void AddToTask::on_modelBox_currentTextChanged(const QString &arg1)
+void AddToTask::on_modelBox_currentTextChanged(const QString &text)
 {
     QSqlQuery query(database);
     query.prepare("SELECT StartDate, Deadline FROM Vehicle WHERE Model = :Model");
-    query.bindValue(":Model", arg1);
+    query.bindValue(":Model", text);
     if (!query.exec()) {
         qDebug() << "AddToTask: Failed to execute query" << query.lastError().text();
         return;
@@ -76,8 +76,8 @@ void AddToTask::on_modelBox_currentTextChanged(const QString &arg1)
         deadline = query.value(1).toString();
     }
 
-    ui->startDateLabel->setText("Start date: " + QDate::fromString(startDate, "yyyyMMdd").toString("dd/MM/yyyy"));
-    ui->deadlineLabel->setText("Deadline: " + QDate::fromString(deadline, "yyyyMMdd").toString("dd/MM/yyyy"));
+    ui->startDateLabel->setText("Start date: " + QDate::fromString(startDate, "yyyy-MM-dd").toString("dd/MM/yyyy"));
+    ui->deadlineLabel->setText("Deadline: " + QDate::fromString(deadline, "yyyy-MM-dd").toString("dd/MM/yyyy"));
 }
 
 void AddToTask::on_addBtn_clicked()
