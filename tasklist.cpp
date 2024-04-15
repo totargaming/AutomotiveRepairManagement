@@ -3,73 +3,16 @@
 TaskList::TaskList(QWidget* parent): EntityList(parent) {
     qDebug() << "TaskList: Initializing TaskList";
     addToTask_ptr = new AddToTask();
-    connect(addToTask_ptr, &AddToTask::taskAdded, this, &TaskList::loadList);
+    connect(addToTask_ptr, &AddToTask::taskAdded, this, [this]() {
+        this->loadList(this->taskType());
+    });
 }
 void TaskList::add() {
     addToTask_ptr->setWindowTitle("Maintenance Task: Assign");
     addToTask_ptr->show();
 }
 
-// void TaskList::remove() {
-//     qDebug() << "TaskList: Entering remove";
 
-//     QModelIndex index = ui->tableView->currentIndex();
-//     if (!index.isValid()) {
-//         qDebug() << "TaskList: Invalid index";
-//         return;
-//     }
-
-//     int row = index.row();
-//     QString modelName = ui->tableView->model()->data(ui->tableView->model()->index(row, 0)).toString();
-
-//     QSqlDatabase database = QSqlDatabase::database("DB");
-//     if (!database.isOpen()) {
-//         qDebug() << "TaskList: Database is not open!";
-//         return;
-//     }
-
-//     QSqlQuery query(database);
-//     query.prepare("SELECT UserID, StaffID FROM Vehicle WHERE Model = :modelName");
-//     query.bindValue(":modelName", modelName);
-//     if (!query.exec()) {
-//         qDebug() << "TaskList: Failed to execute query(1)" << query.lastError();
-//         return;
-//     }
-
-//     if (query.next()) {
-//         QString userId = query.value("UserID").toString();
-//         QString staffId = query.value("StaffID").toString();
-
-//         // Delete customer info
-//         QSqlQuery deleteCustomerQuery(database);
-//         deleteCustomerQuery.prepare("DELETE FROM Customer WHERE UserID = :userId");
-//         deleteCustomerQuery.bindValue(":userId", userId);
-//         if (!deleteCustomerQuery.exec()) {
-//             qDebug() << "TaskList: Failed to execute delete customer query" << deleteCustomerQuery.lastError();
-//             return;
-//         }
-
-//         // Update staff info
-//         QSqlQuery updateStaffQuery(database);
-//         updateStaffQuery.prepare("UPDATE Staff SET Assigned = 0, VehicleID = NULL WHERE StaffID = :staffId");
-//         updateStaffQuery.bindValue(":staffId", staffId);
-//         if (!updateStaffQuery.exec()) {
-//             qDebug() << "TaskList: Failed to execute update staff query" << updateStaffQuery.lastError();
-//             return;
-//         }
-
-//         // Delete vehicle info
-//         QSqlQuery deleteVehicleQuery(database);
-//         deleteVehicleQuery.prepare("DELETE FROM Vehicle WHERE Model = :modelName");
-//         deleteVehicleQuery.bindValue(":modelName", modelName);
-//         if (!deleteVehicleQuery.exec()) {
-//             qDebug() << "TaskList: Failed to execute delete vehicle query" << deleteVehicleQuery.lastError();
-//             return;
-//         }
-//     }
-
-//     qDebug() << "TaskList: Exiting remove";
-// }
 
 void TaskList::showInfo(const QModelIndex &index) {
     qDebug() << "TaskList: Entering showInfo";

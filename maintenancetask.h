@@ -4,6 +4,7 @@
 
 class MaintenanceTask: public TaskList
 {
+
 public:
     MaintenanceTask(QWidget* parent = nullptr);
     void loadList() override {
@@ -13,7 +14,6 @@ public:
     void remove() override;
     void changeToDelivery(const QModelIndex &index);
     ~MaintenanceTask();
-
 
 };
 

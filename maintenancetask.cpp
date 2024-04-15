@@ -34,7 +34,7 @@ void MaintenanceTask::remove() {
     QMessageBox::information(this, "Success", "Task has been successfully moved to delivery state");
 
     qDebug() << "Model: " << modelName << " marked as finished.";
-    loadList();
+    TaskList::loadList();
 }
 
 
