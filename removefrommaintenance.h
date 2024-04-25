@@ -26,7 +26,7 @@ signals:
 private slots:
     void on_removeBtn_clicked();
 
-    void on_removeList_currentTextChanged(const QString &arg1);
+    void on_removeList_currentTextChanged(const QString &text);
 
 private:
     Ui::RemoveFromMaintenance *ui;

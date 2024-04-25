@@ -68,5 +68,6 @@ void DeliveryTask::remove() {
     }
     QMessageBox::information(this, "Success", "Car has been successfully Delivered");
     TaskList::loadList();
+    ui->txtInfo->clear();
     qDebug() << "Delivery: Exiting remove";
 }

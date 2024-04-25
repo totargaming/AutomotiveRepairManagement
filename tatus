@@ -1,0 +1,122 @@
+[33mcommit 82e2649b082fca06ba9bf767a16fc4c428f009af[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Mon Apr 15 12:17:38 2024 +0930
+
+    Finish Implementation
+
+[33mcommit eac9465f0d1376723a04080b9cac9488297c86d0[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Mon Apr 15 12:01:45 2024 +0930
+
+    Finish Implementation of Add To maintenance, Maintenance Task, and fix issue where loadList cant be called
+
+[33mcommit a11ee9413c6707ddae5ff76d6ef226c4a0f5235c[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Mon Apr 15 01:02:11 2024 +0930
+
+    Constructing connection
+
+[33mcommit 7912d155677bb7aa7f6c79e3d771cd52e70fa443[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Sun Apr 14 23:30:33 2024 +0930
+
+    finished partly taskList, maintenanceTask and deliveryTask
+
+[33mcommit 860a9d9d7a3b86c2c4fbcff6ed187f85b8d79235[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Sun Apr 14 20:30:20 2024 +0930
+
+    Finish RemoveFromMaintenance
+
+[33mcommit a472a4b2e762ea8fb3f7a7249e76acfe434e948f[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Sat Apr 13 21:12:13 2024 +0930
+
+    finished Maintenance, not RemoveFromMaintenance
+
+[33mcommit db88c12d67160d0e580d4ee5dd06021e8fec60da[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Sat Apr 13 20:45:04 2024 +0930
+
+    Finish AddToMaintenance
+
+[33mcommit 582de0e269e444eaaebffc2a6dd2e037e0915f4c[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Sat Apr 13 19:50:43 2024 +0930
+
+    Redesign the database, and reshow different infomation
+
+[33mcommit d2b506f08cab7dba83c6dfc95b261ae970435781[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Sat Apr 13 00:19:12 2024 +0930
+
+    Finish loadAll and basic database query in Maintenance
+
+[33mcommit 155bed7ec302d4e77f4fae1211a0b1ba1c0a6770[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Fri Apr 12 15:18:02 2024 +0930
+
+    Finish Staff
+
+[33mcommit f33e86c6903f23bf5230491bcd9db4d55e39d84b[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Fri Apr 12 14:15:03 2024 +0930
+
+    initialize and partly finish Staff
+
+[33mcommit 960fd53e17d9ceeb2d2f716e15fb735d14e2b575[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Thu Apr 11 13:44:13 2024 +0930
+
+    finish Customer, fix database bug in Storage, fix some features
+
+[33mcommit 628fab260d101f65edf252fbee00dbd379994f57[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Wed Apr 10 21:30:33 2024 +0930
+
+    Finish RemoveFromCar
+
+[33mcommit 8b6fef7676b4872409e36d69e77108cd8eb19963[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Tue Apr 9 15:19:43 2024 +0930
+
+    Finish addToCar
+
+[33mcommit cf7731838a02358c2022961f1f83c480f9866815[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Tue Apr 9 13:48:09 2024 +0930
+
+    add qDebug
+
+[33mcommit 49bdf2ff64568f2380df263a39daf479d8e34d72[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Tue Apr 9 00:50:10 2024 +0930
+
+    Fix Database Error and implemented car features
+
+[33mcommit 6808d0c1dc08a9fa52822e5312b7ecace7cfd066[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Sun Apr 7 23:18:21 2024 +0930
+
+    init Car class
+
+[33mcommit 6577ec8c28421fa50ff9b3f2cdd1e604b6e1f3c0[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Sun Apr 7 23:07:17 2024 +0930
+
+    make EntityList as Abstracted
+
+[33mcommit af5cb4001c59cf083efcb3592b79292dd58b0ec3[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Sun Apr 7 19:45:44 2024 +0930
+
+    Initialized EntityList class and Finish Storage functionality:
+    + Implemented PartUpdate to modify quantity or delete items
+    + AddToStorage: Fix database error
+    + Create EntityList...
+
+[33mcommit 10aa60f3f4d0d3bec729673960c1b1a11d51082a[m
+Author: totargaming <totargaming@gmail.com>
+Date:   Mon Apr 1 16:53:57 2024 +1030
+
+    initialize and start with storage

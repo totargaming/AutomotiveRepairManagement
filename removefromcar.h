@@ -24,7 +24,7 @@ signals:
     void carRemoved();
 
 private slots:
-    void on_removeList_currentTextChanged(const QString &arg1);
+    void on_removeList_currentTextChanged(const QString &text);
 
     void on_removeBtn_clicked();
 
