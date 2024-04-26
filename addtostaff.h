@@ -5,8 +5,9 @@
 #include "SQLheader.h"
 #include "validation.h"
 #include <QMessageBox>
-namespace Ui {
-class AddToStaff;
+namespace Ui
+{
+    class AddToStaff;
 }
 
 class AddToStaff : public QDialog, public Validation
@@ -15,7 +16,7 @@ class AddToStaff : public QDialog, public Validation
 
 public:
     explicit AddToStaff(QWidget *parent = nullptr);
-    bool validateUserInput();
+    bool validateUserInput() override;
     void reset();
     ~AddToStaff();
 signals:
@@ -27,7 +28,6 @@ private slots:
 private:
     Ui::AddToStaff *ui;
     QSqlDatabase database;
-
 };
 
 #endif // ADDTOSTAFF_H
