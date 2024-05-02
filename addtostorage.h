@@ -5,8 +5,9 @@
 #include "SQLheader.h"
 #include "validation.h"
 #include <QMessageBox>
-namespace Ui {
-class addToStorage;
+namespace Ui
+{
+    class addToStorage;
 }
 
 class addToStorage : public QDialog, public Validation

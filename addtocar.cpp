@@ -2,8 +2,7 @@
 #include "ui_addtocar.h"
 
 AddToCar::AddToCar(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::AddToCar)
+    : QDialog(parent), ui(new Ui::AddToCar)
 {
     ui->setupUi(this);
     database = QSqlDatabase::database("DB");
@@ -14,29 +13,32 @@ AddToCar::~AddToCar()
     delete ui;
 }
 
-
-
-bool AddToCar::validateUserInput() {
+bool AddToCar::validateUserInput()
+{
     QString model = ui->txtModel->text();
     QString brand = ui->txtBrand->text();
     QString customerName = ui->txtCustomerName->text();
     QString phone = ui->txtPhone->text();
 
     // Check if Model, Brand, and Customer Name are not empty
-    if (model.isEmpty() || brand.isEmpty() || customerName.isEmpty()) {
+    if (model.isEmpty() || brand.isEmpty() || customerName.isEmpty())
+    {
         QMessageBox::warning(this, "Input Error", "Model, Brand, and Customer Name should not be empty.");
         return false;
     }
 
     // Check if Phone starts with 0 and has a length of 10
-    if (!phone.startsWith('0') || phone.length() != 10) {
+    if (!phone.startsWith('0') || phone.length() != 10)
+    {
         QMessageBox::warning(this, "Input Error", "Phone should start with 0 and have a length of 10.");
         return false;
     }
 
     // Check if Phone contains only numeric characters
-    for (QChar c : phone) {
-        if (!c.isDigit()) {
+    for (QChar c : phone)
+    {
+        if (!c.isDigit())
+        {
             QMessageBox::warning(this, "Input Error", "Phone should contain only numeric characters.");
             return false;
         }
@@ -45,15 +47,18 @@ bool AddToCar::validateUserInput() {
     return true;
 }
 
-void AddToCar::reset() {
+void AddToCar::reset()
+{
     ui->txtModel->clear();
     ui->txtBrand->clear();
     ui->txtDescription->clear();
     ui->txtCustomerName->clear();
     ui->txtPhone->clear();
 }
-void AddToCar::on_addBtn_clicked() {
-    if (!validateUserInput()) {
+void AddToCar::on_addBtn_clicked()
+{
+    if (!validateUserInput())
+    {
         return;
     }
 
@@ -71,7 +76,8 @@ void AddToCar::on_addBtn_clicked() {
     query.bindValue(":Brand", brand);
     query.bindValue(":Description", description);
 
-    if (!query.exec()) {
+    if (!query.exec())
+    {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
         return;
     }
@@ -85,7 +91,8 @@ void AddToCar::on_addBtn_clicked() {
     query.bindValue(":Phone", phone);
     query.bindValue(":VehicleID", vehicleID);
 
-    if (!query.exec()) {
+    if (!query.exec())
+    {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
         return;
     }
@@ -98,7 +105,8 @@ void AddToCar::on_addBtn_clicked() {
     query.bindValue(":UserID", userID);
     query.bindValue(":VehicleID", vehicleID);
 
-    if (!query.exec()) {
+    if (!query.exec())
+    {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
         return;
     }
