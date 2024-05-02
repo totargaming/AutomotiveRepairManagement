@@ -115,7 +115,7 @@ void RemoveFromCustomer::on_removeBtn_clicked()
         staffId = query.value(0).toString();
     }
 
-    query.prepare("UPDATE Staff SET Assigned = 0 WHERE StaffID = :StaffId");
+    query.prepare("UPDATE Staff SET Assigned = 0, VehicleID = NULL WHERE StaffID = :StaffId");
     query.bindValue(":StaffId", staffId);
     if (!query.exec()) {
         qDebug() << "RemoveFromCustomer: Failed to update staff" << query.lastError().text();
