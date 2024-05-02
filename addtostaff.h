@@ -1,33 +1,41 @@
 #ifndef ADDTOSTAFF_H
 #define ADDTOSTAFF_H
 
-#include <QDialog>
-#include "SQLheader.h"
-#include "validation.h"
-#include <QMessageBox>
-namespace Ui
-{
-    class AddToStaff;
+// Include necessary header files
+#include <QDialog> // For QDialog class
+#include "SQLheader.h" // For SQL related operations
+#include "validation.h" // For validation related operations
+#include <QMessageBox> // For QMessageBox class
+
+// Declare the Ui namespace and the AddToStaff class
+namespace Ui {
+class AddToStaff;
 }
 
+// Declare the AddToStaff class, which inherits from QDialog and Validation
 class AddToStaff : public QDialog, public Validation
 {
-    Q_OBJECT
+    Q_OBJECT // Enable Qt's meta-object system
 
 public:
+    // Declare the constructor and destructor
     explicit AddToStaff(QWidget *parent = nullptr);
-    bool validateUserInput() override;
-    void reset();
     ~AddToStaff();
-signals:
-    void staffAdded();
-private slots:
 
-    void on_addBtn_clicked();
+    // Declare public methods
+    bool validateUserInput() override; // Method to validate user input, overrides the method from Validation
+    void reset(); // Method to reset the input fields
+
+signals:
+    void staffAdded(); // Signal to be emitted when a staff member is added
+
+private slots:
+    void on_addBtn_clicked(); // Slot to handle the add button click event
 
 private:
-    Ui::AddToStaff *ui;
-    QSqlDatabase database;
+    Ui::AddToStaff *ui; // Pointer to the UI
+    QSqlDatabase database; // Database object
+
 };
 
 #endif // ADDTOSTAFF_H

@@ -103,6 +103,25 @@ void RemoveFromCustomer::on_removeBtn_clicked()
         vehicleId = query.value(0).toString();
     }
 
+    query.prepare("SELECT StaffID FROM Vehicle WHERE VehicleID = :VehicleId");
+    query.bindValue(":VehicleId", vehicleId);
+    if (!query.exec()) {
+        qDebug() << "RemoveFromCustomer: Failed to execute query" << query.lastError().text();
+        return;
+    }
+
+    QString staffId;
+    if (query.next()) {
+        staffId = query.value(0).toString();
+    }
+
+    query.prepare("UPDATE Staff SET Assigned = 0 WHERE StaffID = :StaffId");
+    query.bindValue(":StaffId", staffId);
+    if (!query.exec()) {
+        qDebug() << "RemoveFromCustomer: Failed to update staff" << query.lastError().text();
+        return;
+    }
+
     query.prepare("DELETE FROM Customer WHERE Name = :name");
     query.bindValue(":name", selectedItem);
     if (query.exec()) {

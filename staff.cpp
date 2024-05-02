@@ -19,6 +19,7 @@ void Staff::remove() {
     qDebug() << "Staff: remove() called";
     removeFromStaff_ptr->setWindowTitle("Staff: Fire");
     removeFromStaff_ptr->show();
+    ui->txtInfo->clear();
 }
 
 void Staff::showInfo(const QModelIndex &index) {

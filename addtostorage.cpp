@@ -1,35 +1,36 @@
 #include "addtostorage.h"
 #include "ui_addtostorage.h"
 
+// Constructor
 addToStorage::addToStorage(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::addToStorage)
+    : QDialog(parent) // Initialize QDialog with parent widget
+    , ui(new Ui::addToStorage) // Initialize UI
 {
-    ui->setupUi(this);
-    database = QSqlDatabase::database("DB");
-
+    ui->setupUi(this); // Set up the user interface for this dialog
+    database = QSqlDatabase::database("DB"); // Get the database instance named "DB"
+    qDebug() << "Database initialized successfully";
 }
 
+// Destructor
 addToStorage::~addToStorage()
 {
-    qDebug() << "~addToStorage()";
-
-    delete ui;
+    delete ui; // Delete the UI
+    qDebug() << "UI deleted successfully";
 }
 
-
-
-
+// Function to handle the add button click event
 void addToStorage::on_addBtn_clicked()
 {
-    if (validateUserInput() == true) {
+    // Validate the user input
+    if (validateUserInput()) {
+        // Get the part name and quantity from the UI
         QString partName = ui->input->text();
         int quantity = ui->quantitySelect->value();
-        // Log all the value to terminal to check
-        qDebug() << "partName: " << partName
-                 << "Quantity" << quantity;
 
-        // Insert the value to database
+        // Log the part name and quantity
+        qDebug() << "partName: " << partName << "Quantity: " << quantity;
+
+        // Prepare a query to insert the part name and quantity into the database
         QSqlQuery query(database);
         query.prepare("insert into Storage (name, quantity) values(:name, :quantity)");
         query.bindValue(":name", partName);
@@ -37,26 +38,46 @@ void addToStorage::on_addBtn_clicked()
         query.exec();
         query.finish();
         query.clear();
-        emit partAdded(); // emit the signal
 
+        // Emit the partAdded signal
+        emit partAdded();
+
+        // Log the last error text from the query
         qDebug() << "No error: " << query.lastError().text();
-        QMessageBox::information(this, "Success", "Added succesfully!");
+
+        // Show a success message
+        QMessageBox::information(this, "Success", "Added successfully!");
+
+        // Reset the input fields
         reset();
     }
 }
+
+// Function to reset the input fields
 void addToStorage::reset() {
-    ui->input->clear();
-    ui->quantitySelect->clear();
+    ui->input->clear(); // Clear the input field
+    ui->quantitySelect->clear(); // Clear the quantity select field
+    qDebug() << "Input fields reset";
 }
+
+// Function to validate user input
 bool addToStorage::validateUserInput() {
+    // Get the part name from the UI
     QString partName = ui->input->text();
+
+    // Check if the part name is empty
     if(partName.isEmpty()) {
         QMessageBox::critical(this, "Validation Error!", "Part's name is left blank!");
+        qDebug() << "Part name is empty";
         return false;
     }
+
+    // Prepare a query to select the name from the Storage table
     QSqlQuery query(database);
     query.prepare("SELECT name FROM Storage");
     query.exec();
+
+    // Check if the part name already exists in the database
     while (query.next()) {
         QString existedName = query.value(0).toString();
         if (partName == existedName) {
@@ -67,9 +88,10 @@ bool addToStorage::validateUserInput() {
             return false;
         }
     }
+
     query.finish();
     query.clear();
     qDebug() << "No Error: " << query.lastError().text();
+
     return true;
 }
-

@@ -1,36 +1,42 @@
 #ifndef ADDTOTASK_H
 #define ADDTOTASK_H
 
-#include <QDialog>
-#include "SQLheader.h"
-#include "validation.h"
-#include <QMessageBox>
-#include <QDate>
+// Include necessary header files
+#include <QDialog> // For QDialog class
+#include "SQLheader.h" // For SQL related classes
+#include "validation.h" // For Validation class
+#include <QMessageBox> // For QMessageBox class
+#include <QDate> // For QDate class
+
+// Forward declaration of the Ui::AddToTask class
 namespace Ui
 {
     class AddToTask;
 }
 
-class AddToTask : public QDialog, Validation
+// AddToTask class declaration
+class AddToTask : public QDialog, Validation // Inherits from QDialog and Validation
 {
-    Q_OBJECT
+    Q_OBJECT // Enable Qt's meta-object system
 
 public:
-    explicit AddToTask(QWidget *parent = nullptr);
-    bool validateUserInput();
-    void loadBox();
-    void showEvent(QShowEvent *event);
-    ~AddToTask();
-signals:
-    void taskAdded();
-private slots:
-    void on_modelBox_currentTextChanged(const QString &text);
+    explicit AddToTask(QWidget *parent = nullptr); // Constructor
+    bool validateUserInput(); // Method to validate user input
+    void loadBox(); // Method to load the combo boxes
+    void showEvent(QShowEvent *event); // Method to handle the show event
+    ~AddToTask(); // Destructor
 
-    void on_addBtn_clicked();
+signals:
+    void taskAdded(); // Signal to be emitted when a task is added
+
+private slots:
+    void on_modelBox_currentTextChanged(const QString &text); // Slot to handle the currentTextChanged signal of the model combo box
+
+    void on_addBtn_clicked(); // Slot to handle the clicked signal of the add button
 
 private:
-    Ui::AddToTask *ui;
-    QSqlDatabase database;
+    Ui::AddToTask *ui; // Pointer to the UI
+    QSqlDatabase database; // Database object
 };
 
 #endif // ADDTOTASK_H

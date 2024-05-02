@@ -1,40 +1,45 @@
 #include "addtocar.h"
 #include "ui_addtocar.h"
+#include <QDebug> // Include for qDebug
 
+// Constructor for AddToCar class
 AddToCar::AddToCar(QWidget *parent)
     : QDialog(parent), ui(new Ui::AddToCar)
 {
-    ui->setupUi(this);
-    database = QSqlDatabase::database("DB");
+    ui->setupUi(this);                       // Set up the user interface for this dialog
+    database = QSqlDatabase::database("DB"); // Connect to the database named "DB"
+    qDebug() << "AddToCar constructor called";
 }
 
+// Destructor for AddToCar class
 AddToCar::~AddToCar()
 {
-    delete ui;
+    delete ui; // Delete the user interface when the dialog is destroyed
+    qDebug() << "AddToCar destructor called";
 }
 
+// Function to validate user input
 bool AddToCar::validateUserInput()
 {
+    // Get user input from UI
     QString model = ui->txtModel->text();
     QString brand = ui->txtBrand->text();
     QString customerName = ui->txtCustomerName->text();
     QString phone = ui->txtPhone->text();
 
-    // Check if Model, Brand, and Customer Name are not empty
+    // Validate user input
     if (model.isEmpty() || brand.isEmpty() || customerName.isEmpty())
     {
         QMessageBox::warning(this, "Input Error", "Model, Brand, and Customer Name should not be empty.");
         return false;
     }
 
-    // Check if Phone starts with 0 and has a length of 10
     if (!phone.startsWith('0') || phone.length() != 10)
     {
         QMessageBox::warning(this, "Input Error", "Phone should start with 0 and have a length of 10.");
         return false;
     }
 
-    // Check if Phone contains only numeric characters
     for (QChar c : phone)
     {
         if (!c.isDigit())
@@ -44,9 +49,11 @@ bool AddToCar::validateUserInput()
         }
     }
 
+    qDebug() << "User input validated";
     return true;
 }
 
+// Function to reset all input fields
 void AddToCar::reset()
 {
     ui->txtModel->clear();
@@ -54,14 +61,19 @@ void AddToCar::reset()
     ui->txtDescription->clear();
     ui->txtCustomerName->clear();
     ui->txtPhone->clear();
+    qDebug() << "Input fields reset";
 }
+
+// Function to handle the click event of the add button
 void AddToCar::on_addBtn_clicked()
 {
+    // Validate user input before proceeding
     if (!validateUserInput())
     {
         return;
     }
 
+    // Get user input from UI
     QString model = ui->txtModel->text();
     QString brand = ui->txtBrand->text();
     QString description = ui->txtDescription->toPlainText().simplified();
@@ -82,7 +94,6 @@ void AddToCar::on_addBtn_clicked()
         return;
     }
 
-    // Get the VehicleID of the last inserted Vehicle
     int vehicleID = query.lastInsertId().toInt();
 
     // Insert into Customer table
@@ -97,7 +108,6 @@ void AddToCar::on_addBtn_clicked()
         return;
     }
 
-    // Get the UserID of the last inserted Customer
     int userID = query.lastInsertId().toInt();
 
     // Update the UserID in the Vehicle table
@@ -110,6 +120,8 @@ void AddToCar::on_addBtn_clicked()
         QMessageBox::critical(this, "Database Error", query.lastError().text());
         return;
     }
+
+    qDebug() << "Car added successfully";
     emit carAdded();
 
     QMessageBox::information(this, "Success", "Vehicle and Customer information added successfully.");
