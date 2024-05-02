@@ -1,88 +1,97 @@
 #include "storage.h"
 #include "ui_storage.h"
 
+// Constructor for the Storage class
 Storage::Storage(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::Storage)
+    : QDialog(parent) // Initialize the QDialog with the parent widget
+    , ui(new Ui::Storage) // Initialize the UI for the Storage
 {
     qDebug() << "Entering Storage constructor";
-    ui->setupUi(this);
-    loadAll();
-    addToStorage_ptr = new addToStorage();
+    ui->setupUi(this); // Set up the UI for this widget
+    loadAll(); // Load all data
+    addToStorage_ptr = new addToStorage(); // Initialize addToStorage_ptr
     partUpdate_ptr = new PartUpdate(); // Initialize partUpdate_ptr
+    // Connect the partAdded signal from addToStorage to the loadAll slot in this class
     connect(addToStorage_ptr, &addToStorage::partAdded, this, &Storage::loadAll);
+    // Connect the partUpdated signal from PartUpdate to the loadAll slot in this class
     connect(partUpdate_ptr, &PartUpdate::partUpdated, this, &Storage::loadAll);
     qDebug() << "Exiting Storage constructor";
 }
 
+// Destructor for the Storage class
 Storage::~Storage()
 {
     qDebug() << "Entering Storage destructor";
-    delete ui;
-    delete addToStorage_ptr;
-    delete partUpdate_ptr;
+    delete ui; // Delete the UI
+    delete addToStorage_ptr; // Delete the addToStorage_ptr
+    delete partUpdate_ptr; // Delete the partUpdate_ptr
     qDebug() << "Exiting Storage destructor";
 }
 
+// Function to load all data
 void Storage::loadAll() {
     qDebug() << "Storage: Entering loadAll";
-    QSqlDatabase database = QSqlDatabase::database("DB");
-    if (!database.isOpen()) {
+    QSqlDatabase database = QSqlDatabase::database("DB"); // Get the database
+    if (!database.isOpen()) { // If the database is not open
         qDebug() << "Storage: Database is not open!";
-        return;
+        return; // Return from the function
     }
-    model = new QSqlQueryModel();
-    model->setQuery("SELECT Name, Quantity FROM Storage", database);
+    model = new QSqlQueryModel(); // Create a new QSqlQueryModel
+    model->setQuery("SELECT Name, Quantity FROM Storage", database); // Set the query for the model
 
-    ui->tableView->setModel(model);
+    ui->tableView->setModel(model); // Set the model for the tableView
     qDebug() << "Storage: Exiting loadAll";
 }
 
+// Function to handle the click event of the search button
 void Storage::on_searchBtn_clicked()
 {
     qDebug() << "Storage: Entering on_searchBtn_clicked";
-    QString partName = ui->input->text();
+    QString partName = ui->input->text(); // Get the text from the input
     qDebug() << "Part: " << partName;
-    QSqlDatabase database = QSqlDatabase::database("DB");
+    QSqlDatabase database = QSqlDatabase::database("DB"); // Get the database
 
-    model = new QSqlQueryModel();
+    model = new QSqlQueryModel(); // Create a new QSqlQueryModel
 
-    if(partName.isEmpty()) {
-        loadAll();
+    if(partName.isEmpty()) { // If the partName is empty
+        loadAll(); // Load all data
     }
     else {
-        QSqlQuery query(database);
-        query.prepare("SELECT * FROM Storage WHERE name LIKE :partName");
-        query.bindValue(":partName", "%" + partName + "%");
-        if (!query.exec()) {
+        QSqlQuery query(database); // Create a QSqlQuery with the database
+        query.prepare("SELECT * FROM Storage WHERE name LIKE :partName"); // Prepare the query
+        query.bindValue(":partName", "%" + partName + "%"); // Bind the value for partName
+        if (!query.exec()) { // If the query execution fails
             qDebug() << "Storage: Failed to execute query" << query.lastError();
-            return;
+            return; // Return from the function
         }
-        model->setQuery(query);
-        ui->tableView->setModel(model);
+        model->setQuery(query); // Set the query for the model
+        ui->tableView->setModel(model); // Set the model for the tableView
     }
     qDebug() << "Storage: Exiting on_searchBtn_clicked";
 }
 
+// Function to handle the click event of the refresh button
 void Storage::on_refreshBtn_clicked()
 {
     qDebug() << "Storage: Entering on_refreshBtn_clicked";
-    loadAll();
+    loadAll(); // Load all data
     qDebug() << "Storage: Exiting on_refreshBtn_clicked";
 }
 
+// Function to handle the click event of the add button
 void Storage::on_addBtn_clicked()
 {
     qDebug() << "Storage: Entering on_addBtn_clicked";
-    addToStorage_ptr->setWindowTitle("Storage: Add Parts");
-    addToStorage_ptr->show();
+    addToStorage_ptr->setWindowTitle("Storage: Add Parts"); // Set the window title for addToStorage_ptr
+    addToStorage_ptr->show(); // Show the addToStorage_ptr
     qDebug() << "Storage: Exiting on_addBtn_clicked";
 }
 
+// Function to handle the click event of the update button
 void Storage::on_updateBtn_clicked()
 {
     qDebug() << "Storage: Entering on_updateBtn_clicked";
-    partUpdate_ptr->setWindowTitle("Storage: Update");
-    partUpdate_ptr->show();
+    partUpdate_ptr->setWindowTitle("Storage: Update"); // Set the window title for partUpdate_ptr
+    partUpdate_ptr->show(); // Show the partUpdate_ptr
     qDebug() << "Storage: Exiting on_updateBtn_clicked";
 }

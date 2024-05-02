@@ -1,37 +1,44 @@
 #ifndef REMOVEFROMSTAFF_H
 #define REMOVEFROMSTAFF_H
 
-#include <QDialog>
-#include "SQLheader.h"
-#include "validation.h"
-#include <QMessageBox>
+// Include necessary header files
+#include <QDialog> // For QDialog class
+#include "SQLheader.h" // For SQL related classes
+#include "validation.h" // For Validation class
+#include <QMessageBox> // For QMessageBox class
 
+// Declare UI namespace and forward declare RemoveFromStaff class in it
 namespace Ui {
 class RemoveFromStaff;
 }
 
+// Declare RemoveFromStaff class, which inherits from QDialog and Validation
 class RemoveFromStaff : public QDialog, Validation
 {
-    Q_OBJECT
+    Q_OBJECT // Enable QObject features
 
 public:
+    // Declare constructor and destructor
     explicit RemoveFromStaff(QWidget *parent = nullptr);
-    bool validateUserInput();
-    void loadBox();
-    void showEvent(QShowEvent *event);
-
     ~RemoveFromStaff();
-signals:
-    void staffRemoved();
-private slots:
-    void on_removeBtn_clicked();
 
-    void on_removeList_currentTextChanged(const QString &text);
+    // Declare public member functions
+    bool validateUserInput(); // Function to validate user input
+    void loadBox(); // Function to load items into combo box
+    void showEvent(QShowEvent *event); // Function to handle show event
+
+signals:
+    void staffRemoved(); // Signal to be emitted when a staff member is removed
+
+private slots:
+    // Declare slots for handling UI events
+    void on_removeBtn_clicked(); // Slot for remove button click event
+    void on_removeList_currentTextChanged(const QString &text); // Slot for change in selected item in combo box
 
 private:
-    Ui::RemoveFromStaff *ui;
-    QSqlDatabase database;
-
+    // Declare private member variables
+    Ui::RemoveFromStaff *ui; // Pointer to UI object
+    QSqlDatabase database; // Object for database connection
 };
 
 #endif // REMOVEFROMSTAFF_H
