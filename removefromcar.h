@@ -33,7 +33,7 @@ public:
 
     // Destructor declaration
     ~RemoveFromCar();
-    
+    friend class TestRemoveFromCar;
 signals:
     // Signal that is emitted when a car is removed
     void carRemoved();

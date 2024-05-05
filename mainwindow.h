@@ -3,7 +3,8 @@
 #define MAINWINDOW_H
 
 // Include the necessary header files.
-#include "qsqldatabase.h"
+#include "SQLheader.h"
+
 #include <QMainWindow>
 #include <QDebug>
 #include <QGuiApplication>
