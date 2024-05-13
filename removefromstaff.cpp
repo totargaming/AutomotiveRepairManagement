@@ -103,6 +103,14 @@ void RemoveFromStaff::on_removeBtn_clicked()
         staffId = query.value(0).toString();
     }
 
+    // Update the Vehicle table
+    query.prepare("UPDATE Vehicle SET StaffID = NULL, Assigned = 0 WHERE StaffID = :StaffID");
+    query.bindValue(":StaffID", staffId);
+    if (!query.exec()) {
+        qDebug() << "RemoveFromStaff: Failed to update Vehicle table" << query.lastError().text();
+        return;
+    }
+
     query.prepare("DELETE FROM Staff WHERE Name = :Name"); // Prepare the delete query
     query.bindValue(":Name", selectedItem); // Bind the value
     if (query.exec()) { // Execute the query
