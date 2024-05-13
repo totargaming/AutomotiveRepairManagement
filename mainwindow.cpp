@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     // Add a SQLite database connection named "DB".
     database = QSqlDatabase::addDatabase("QSQLITE", "DB");
     // Set the database name (i.e., the path to the database file).
-    database.setDatabaseName("database.db");
+    database.setDatabaseName("E:\\Workspace\\AutomotiveRepairManagement\\database.db");
     // Try to open the database.
     if(!database.open()){
         // If the database fails to open, output a debug message and return from the constructor.
