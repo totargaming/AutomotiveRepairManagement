@@ -2,18 +2,37 @@
 #include <QApplication> // Include QApplication
 #include "tst_addtocar.h"
 #include "tst_removefromcar.h"
+#include "tst_addtostaff.h" // Include the AddToStaff test header file
+#include "tst_addtomaintenance.h"
+#include "../SQLheader.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv); // Create QApplication
 
     int status = 0;
+    QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE", "DB");
+    // Set the database name (i.e., the path to the database file).
+    database.setDatabaseName("E:\\Workspace\\AutomotiveRepairManagement\\database.db");
+    // Try to open the database.
+    if(!database.open()){
+        // If the database fails to open, output a debug message and return from the constructor.
+        qDebug() << "Maintest: Error: Unable to open database..";
+    }
+    else{
+        // If the database opens successfully, output a debug message.
+        qDebug() << "Maintest: Database open successfully..";
+    }
+    TestAddToCar addCarTest;
+    status |= QTest::qExec(&addCarTest, argc, argv);
 
-    TestAddToCar addTest;
-    status |= QTest::qExec(&addTest, argc, argv);
+    TestRemoveFromCar removeCarTest;
+    status |= QTest::qExec(&removeCarTest, argc, argv);
 
-    // RemoveFromCar removeTest;
-    // status |= QTest::qExec(&removeTest, argc, argv);
+    TestAddToStaff addStaffTest; // Create an instance of TestAddToStaff
+    status |= QTest::qExec(&addStaffTest, argc, argv); // Run the AddToStaff test
+    TestAddToMaintenance addMaintenanceTest;
+    status |= QTest::qExec(&addMaintenanceTest, argc, argv);
 
     return status;
 }

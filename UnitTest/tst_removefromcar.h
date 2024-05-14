@@ -2,9 +2,9 @@
 #define TESTREMOVEFROMCAR_H
 
 #include <QtTest>
-
-// add necessary includes here
-
+#include "../removefromcar.h"
+#include "../ui_removefromcar.h"
+#include "../SQLheader.h"
 class TestRemoveFromCar : public QObject
 {
     Q_OBJECT
@@ -16,7 +16,11 @@ public:
 private slots:
     void initTestCase();
     void cleanupTestCase();
-    void test_case1();
+    void test_validateUserInput();
+    void test_loadBox();
 
+private:
+    RemoveFromCar *removeFromCar;
 };
-#endif // TSTREMOVEFROMCAR_H
+
+#endif // TESTREMOVEFROMCAR_H
