@@ -1,7 +1,7 @@
 #include "addtocar.h"
 #include "ui_addtocar.h"
 #include <QDebug> // Include for qDebug
-
+#include <QRegularExpression>
 // Constructor for AddToCar class
 AddToCar::AddToCar(QWidget *parent)
     : QDialog(parent), ui(new Ui::AddToCar)
@@ -26,6 +26,7 @@ bool AddToCar::validateUserInput()
     QString brand = ui->txtBrand->text();
     QString customerName = ui->txtCustomerName->text();
     QString phone = ui->txtPhone->text();
+    QString description = ui->txtDescription->toPlainText();
 
     // Validate user input
     if (model.isEmpty() || brand.isEmpty() || customerName.isEmpty())
@@ -47,6 +48,19 @@ bool AddToCar::validateUserInput()
             QMessageBox::warning(this, "Input Error", "Phone should contain only numeric characters.");
             return false;
         }
+    }
+
+    if (description.isEmpty())
+    {
+        QMessageBox::warning(this, "Input Error", "Description should not be empty.");
+        return false;
+    }
+
+    QRegularExpression rx("^[a-zA-Z0-9]*$");  // Regex for alphanumeric characters
+    if (!rx.match(model).hasMatch() || !rx.match(brand).hasMatch())
+    {
+        QMessageBox::warning(this, "Input Error", "Model and Brand should contain only alphanumeric characters.");
+        return false;
     }
 
     qDebug() << "User input validated";

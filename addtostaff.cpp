@@ -28,7 +28,7 @@ bool AddToStaff::validateUserInput() {
 
     // Check if any of the fields are empty
     if (name.isEmpty() || phone.isEmpty() || wageText.isEmpty()) {
-        QMessageBox::warning(this, "Input Error", "Name, Phone, and Wage Name should not be empty.");
+        QMessageBox::warning(this, "Input Error", "Name, Phone, and Wage should not be empty.");
         qDebug() << "Name, Phone, or Wage is empty";
         return false;
     }
@@ -45,6 +45,24 @@ bool AddToStaff::validateUserInput() {
         if (!c.isDigit()) {
             QMessageBox::warning(this, "Input Error", "Phone should contain only numeric characters.");
             qDebug() << "Phone number contains non-numeric characters";
+            return false;
+        }
+    }
+
+    // Check if the wage is a valid number
+    bool ok;
+    double wage = wageText.toDouble(&ok);
+    if (!ok || wage < 0) {
+        QMessageBox::warning(this, "Input Error", "Wage should be a valid positive number.");
+        qDebug() << "Wage is not a valid number";
+        return false;
+    }
+
+    // Check if the name contains only alphabetic characters
+    for (QChar c : name) {
+        if (!c.isLetter()) {
+            QMessageBox::warning(this, "Input Error", "Name should contain only alphabetic characters.");
+            qDebug() << "Name contains non-alphabetic characters";
             return false;
         }
     }

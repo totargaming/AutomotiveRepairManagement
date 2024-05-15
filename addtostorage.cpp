@@ -62,14 +62,31 @@ void addToStorage::reset() {
 
 // Function to validate user input
 bool addToStorage::validateUserInput() {
-    // Get the part name from the UI
+    // Get the part name and quantity from the UI
     QString partName = ui->input->text();
+    int quantity = ui->quantitySelect->value();
 
     // Check if the part name is empty
     if(partName.isEmpty()) {
         QMessageBox::critical(this, "Validation Error!", "Part's name is left blank!");
         qDebug() << "Part name is empty";
         return false;
+    }
+
+    // Check if the quantity is valid
+    if(quantity <= 0) {
+        QMessageBox::critical(this, "Validation Error!", "Quantity should be a positive integer!");
+        qDebug() << "Invalid quantity";
+        return false;
+    }
+
+    // Check if the part name contains only alphabetic characters and spaces
+    for (QChar c : partName) {
+        if (!c.isLetter() && !c.isSpace()) {
+            QMessageBox::critical(this, "Validation Error!", "Part name should contain only alphabetic characters and spaces!");
+            qDebug() << "Part name contains non-alphabetic characters";
+            return false;
+        }
     }
 
     // Prepare a query to select the name from the Storage table
