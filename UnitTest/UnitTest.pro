@@ -24,6 +24,8 @@ SOURCES +=  tst_addtocar.cpp \
     tst_removefromcustomer.cpp\
     ../removefrommaintenance.cpp\
     tst_removefrommaintenance.cpp\
+    ../removefromstaff.cpp\
+    tst_removefromstaff.cpp
 
 HEADERS += \
     tst_addtocar.h \
@@ -44,3 +46,5 @@ HEADERS += \
     tst_removefromcustomer.h \
     tst_removefrommaintenance.h\
     ../removefrommaintenance.h\
+    ../removefromstaff.h\
+    tst_removefromstaff.h

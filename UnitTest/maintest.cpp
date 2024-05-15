@@ -8,6 +8,7 @@
 #include "tst_addtotask.h"
 #include "tst_removefromcustomer.h"
 #include "tst_removefrommaintenance.h"
+#include "tst_removefromstaff.h"
 #include "../SQLheader.h"
 
 int main(int argc, char *argv[])
@@ -50,6 +51,12 @@ int main(int argc, char *argv[])
 
     TestRemoveFromMaintenance removeMaintenanceTest;
     status |= QTest::qExec(&removeMaintenanceTest, argc, argv);
+
+    TestRemoveFromStaff removeStaffTest;
+    status |= QTest::qExec(&removeStaffTest,argc, argv);
+
+    database.close();
+    QSqlDatabase::removeDatabase(database.connectionName());
 
     return status;
 }
