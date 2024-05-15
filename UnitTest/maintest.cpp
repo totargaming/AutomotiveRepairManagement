@@ -4,6 +4,10 @@
 #include "tst_removefromcar.h"
 #include "tst_addtostaff.h" // Include the AddToStaff test header file
 #include "tst_addtomaintenance.h"
+#include "tst_addtostorage.h"
+#include "tst_addtotask.h"
+#include "tst_removefromcustomer.h"
+#include "tst_removefrommaintenance.h"
 #include "../SQLheader.h"
 
 int main(int argc, char *argv[])
@@ -31,8 +35,21 @@ int main(int argc, char *argv[])
 
     TestAddToStaff addStaffTest; // Create an instance of TestAddToStaff
     status |= QTest::qExec(&addStaffTest, argc, argv); // Run the AddToStaff test
+
     TestAddToMaintenance addMaintenanceTest;
     status |= QTest::qExec(&addMaintenanceTest, argc, argv);
+
+    TestAddToStorage addStorageTest;
+    status |= QTest::qExec(&addStorageTest, argc, argv);
+
+    TestAddToTask addTaskTest;
+    status |= QTest::qExec(&addTaskTest, argc, argv);
+
+    TestRemoveFromCustomer removeCustomerTest;
+    status |= QTest::qExec(&removeCustomerTest, argc, argv);
+
+    TestRemoveFromMaintenance removeMaintenanceTest;
+    status |= QTest::qExec(&removeMaintenanceTest, argc, argv);
 
     return status;
 }

@@ -20,7 +20,7 @@ private slots:
     void test_loadBox();
 
 private:
-    RemoveFromCar *removeFromCar;
+    RemoveFromCar *removefromcar;
 };
 
 #endif // TESTREMOVEFROMCAR_H

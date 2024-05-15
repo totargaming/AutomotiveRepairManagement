@@ -2,12 +2,12 @@
 
 TestRemoveFromCar::TestRemoveFromCar()
 {
-    removeFromCar = new RemoveFromCar();
+    removefromcar = new RemoveFromCar();
 }
 
 TestRemoveFromCar::~TestRemoveFromCar()
 {
-    delete removeFromCar;
+    delete removefromcar;
 }
 
 void TestRemoveFromCar::initTestCase()
@@ -23,13 +23,13 @@ void TestRemoveFromCar::cleanupTestCase()
 void TestRemoveFromCar::test_validateUserInput()
 {
     // Test case: Check if validateUserInput function returns false when no item is selected
-    removeFromCar->ui->removeList->clear();
-    QCOMPARE(removeFromCar->validateUserInput(), false);
+    removefromcar->ui->removeList->clear();
+    QCOMPARE(removefromcar->validateUserInput(), false);
 
     // Test case: Check if validateUserInput function returns true when an item is selected
-    removeFromCar->ui->removeList->addItem("Test Item"); // Add an item to the combo box
-    removeFromCar->ui->removeList->setCurrentText("Test Item"); // Set the current text to the added item
-    QCOMPARE(removeFromCar->validateUserInput(), true);
+    removefromcar->ui->removeList->addItem("Test Item"); // Add an item to the combo box
+    removefromcar->ui->removeList->setCurrentText("Test Item"); // Set the current text to the added item
+    QCOMPARE(removefromcar->validateUserInput(), true);
 }
 
 void TestRemoveFromCar::test_loadBox()
@@ -45,13 +45,13 @@ void TestRemoveFromCar::test_loadBox()
     query.exec("INSERT INTO Vehicle (Model) VALUES ('Test Model')");
 
     // 2. Call removeFromCar->loadBox()
-    removeFromCar->loadBox();
+    removefromcar->loadBox();
 
     // 3. Check if the combo box contains the data you inserted into the database
     bool containsInsertedData = false;
-    for(int i = 0; i < removeFromCar->ui->removeList->count(); i++)
+    for(int i = 0; i < removefromcar->ui->removeList->count(); i++)
     {
-        if(removeFromCar->ui->removeList->itemText(i) == "Test Model")
+        if(removefromcar->ui->removeList->itemText(i) == "Test Model")
         {
             containsInsertedData = true;
             break;
