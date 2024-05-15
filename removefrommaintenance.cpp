@@ -55,6 +55,8 @@ void RemoveFromMaintenance::showEvent(QShowEvent *event)
 
     // Refresh the combo box
     loadBox();
+    qDebug() << "Dialog shown";
+
 }
 
 // Function to load data into combo box

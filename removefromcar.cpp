@@ -45,6 +45,8 @@ void RemoveFromCar::showEvent(QShowEvent *event)
 {
     QDialog::showEvent(event); // Call the base class implementation.
     loadBox(); // Refresh the combo box.
+    qDebug() << "Dialog shown";
+
 }
 
 // Define the validateUserInput function, which validates the user's input.

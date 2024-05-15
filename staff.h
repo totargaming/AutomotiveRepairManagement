@@ -32,6 +32,7 @@ public:
 
     // Declare the overridden nameSort function
     void nameSort() override;
+    void showEvent(QShowEvent *event); // Method to handle the show event
 
     // Declare the destructor
     ~Staff();

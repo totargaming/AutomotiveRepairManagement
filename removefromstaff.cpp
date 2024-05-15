@@ -53,6 +53,8 @@ void RemoveFromStaff::loadBox() {
 void RemoveFromStaff::showEvent(QShowEvent *event) {
     QDialog::showEvent(event); // Call base class implementation
     loadBox(); // Refresh the combo box
+    qDebug() << "Dialog shown";
+
 }
 
 // Slot to handle change in selected item in combo box

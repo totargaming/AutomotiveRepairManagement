@@ -30,7 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     maintenance_ptr = new Maintenance();
     maintenanceTask_ptr = new MaintenanceTask();
     deliveryTask_ptr = new DeliveryTask();
-}
+    connect(maintenanceTask_ptr, &MaintenanceTask::forwardedToDelivery, this, [this]() {
+        this->deliveryTask_ptr->loadList();
+    });}
 
 // Define the destructor for the MainWindow class.
 MainWindow::~MainWindow()

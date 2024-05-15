@@ -18,7 +18,11 @@ Customer::Customer(QWidget* parent): EntityList(parent) {
 void Customer::add() {
 
 }
-
+void Customer::showEvent(QShowEvent *event) {
+    QWidget::showEvent(event); // Call base class implementation
+    loadList(); // Refresh the combo box
+    qDebug() << "Customer Widget shown";
+}
 // Remove function
 void Customer::remove() {
     qDebug() << "Car: remove() called";

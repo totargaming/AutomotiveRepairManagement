@@ -8,7 +8,7 @@
 // Declare the MaintenanceTask class, which inherits from the TaskList class.
 class MaintenanceTask: public TaskList
 {
-
+    Q_OBJECT
 public:
     // Declare the constructor for the MaintenanceTask class. It takes a QWidget pointer as a parameter, with a default value of nullptr.
     MaintenanceTask(QWidget* parent = nullptr);
@@ -26,9 +26,12 @@ public:
     
     // Declare a function to change the status of a task to delivery. It takes a QModelIndex as a parameter.
     void changeToDelivery(const QModelIndex &index);
-    
+    void showEvent(QShowEvent *event); // Method to handle the show event
+
     // Declare the destructor for the MaintenanceTask class.
     ~MaintenanceTask();
+signals:
+    void forwardedToDelivery();
 
 };
 

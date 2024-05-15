@@ -98,7 +98,11 @@ void DeliveryTask::remove()
     ui->txtInfo->clear(); // Clear the text info
     qDebug() << "Delivery: Exiting remove"; // Debug message indicating the end of the remove function
 }
-
+void DeliveryTask::showEvent(QShowEvent *event) {
+    QWidget::showEvent(event); // Call base class implementation
+    loadList(); // Refresh the combo box
+    qDebug() << "DeliveryTask Widget shown";
+}
 // Destructor for the DeliveryTask class
 DeliveryTask::~DeliveryTask()
 {

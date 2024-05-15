@@ -30,7 +30,7 @@ SOURCES += \
     staff.cpp \
     storage.cpp \
     tasklist.cpp \
-    validation.cpp
+    validation.cpp\
 
 HEADERS += \
     SQLheader.h \
@@ -54,7 +54,7 @@ HEADERS += \
     staff.h \
     storage.h \
     tasklist.h \
-    validation.h
+    validation.h\
 
 FORMS += \
     addtocar.ui \
@@ -70,7 +70,7 @@ FORMS += \
     removefromcustomer.ui \
     removefrommaintenance.ui \
     removefromstaff.ui \
-    storage.ui
+    storage.ui\
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

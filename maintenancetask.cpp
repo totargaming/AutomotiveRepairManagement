@@ -14,7 +14,11 @@ MaintenanceTask::MaintenanceTask(QWidget* parent) : TaskList(parent) {
 QString MaintenanceTask::taskType() {
     return "Maintenance";
 }
-
+void MaintenanceTask::showEvent(QShowEvent *event) {
+    QWidget::showEvent(event); // Call base class implementation
+    loadList(); // Refresh the combo box
+    qDebug() << "MaintenanceTask Widget shown";
+}
 // Define a function to remove a task.
 void MaintenanceTask::remove() {
     // Get the currently selected index in the table view.
@@ -52,7 +56,9 @@ void MaintenanceTask::remove() {
 
     // Output a debug message indicating that the model has been marked as finished.
     qDebug() << "Model: " << modelName << " marked as finished.";
+    emit forwardedToDelivery();
     // Reload the task list.
+
     TaskList::loadList();
 }
 

@@ -46,6 +46,8 @@ void RemoveFromCustomer::loadBox() {
 void RemoveFromCustomer:: showEvent(QShowEvent *event) {
     QDialog::showEvent(event); // Call base class implementation
     loadBox(); // Refresh the combo box
+    qDebug() << "Dialog shown";
+
 }
 
 void RemoveFromCustomer::on_removeList_currentTextChanged(const QString &text)

@@ -13,6 +13,11 @@ Staff::Staff(QWidget *parent): EntityList(parent) {
     connect(removeFromStaff_ptr, &RemoveFromStaff::staffRemoved, this, &Staff::loadList);
 }
 
+void Staff::showEvent(QShowEvent *event) {
+    QWidget::showEvent(event); // Call base class implementation
+    loadList(); // Refresh the combo box
+    qDebug() << "Staff Widget shown";
+}
 // Function to add a staff member
 void Staff::add() {
     qDebug() << "Staff: add() called";

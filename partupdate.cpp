@@ -52,6 +52,8 @@ void PartUpdate::showEvent(QShowEvent *event)
 {
     QDialog::showEvent(event); // Call the base class implementation.
     loadBox(); // Refresh the combo box.
+    qDebug() << "Dialog shown";
+
 }
 
 // Define a slot for the click event of the delete button.

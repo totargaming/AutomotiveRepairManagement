@@ -25,6 +25,8 @@ public:
     void idSort() override;
     // Override the nameSort function from EntityList
     void nameSort() override;
+    void showEvent(QShowEvent *event); // Method to handle the show event
+
     // Destructor
     ~Car();
 private:

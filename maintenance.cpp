@@ -26,6 +26,11 @@ Maintenance::~Maintenance()
     delete addToMaintenance_ptr;  // Delete the pointer for adding to maintenance
     delete removeFromMaintenance_ptr;  // Delete the pointer for removing from maintenance
 }
+void Maintenance::showEvent(QShowEvent *event) {
+    QWidget::showEvent(event); // Call base class implementation
+    loadAll(); // Refresh the combo box
+    qDebug() << "Maintenance Widget shown";
+}
 
 // Function to load all data
 void Maintenance::loadAll() {

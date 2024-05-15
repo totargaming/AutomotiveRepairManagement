@@ -127,7 +127,11 @@ void Car::showInfo(const QModelIndex &index) {
 
     qDebug() << "Car: Exiting showInfo";
 }
-
+void Car::showEvent(QShowEvent *event) {
+    QWidget::showEvent(event); // Call base class implementation
+    loadList(); // Refresh the combo box
+    qDebug() << "Car Widget shown";
+}
 // Destructor
 Car::~Car() {
     qDebug() << "Car: Destructor called";

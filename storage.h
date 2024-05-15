@@ -23,6 +23,7 @@ public:
 
     // Declare the loadAll function
     void loadAll();
+    void showEvent(QShowEvent *event); // Method to handle the show event
 
     // Declare the destructor
     ~Storage();

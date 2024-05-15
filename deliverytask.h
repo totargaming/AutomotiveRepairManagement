@@ -5,6 +5,7 @@
 // Define the DeliveryTask class, which inherits from TaskList
 class DeliveryTask : public TaskList
 {
+    Q_OBJECT
 public:
     // Constructor, takes a QWidget pointer as an argument with a default value of nullptr
     DeliveryTask(QWidget *parent = nullptr);
@@ -17,6 +18,7 @@ public:
 
     // Override the add function from TaskList, but provide no implementation
     void add() override {}
+    void showEvent(QShowEvent *event); // Method to handle the show event
 
     // Destructor
     ~DeliveryTask();

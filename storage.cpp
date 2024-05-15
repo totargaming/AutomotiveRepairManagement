@@ -27,7 +27,11 @@ Storage::~Storage()
     delete partUpdate_ptr; // Delete the partUpdate_ptr
     qDebug() << "Exiting Storage destructor";
 }
-
+void Storage::showEvent(QShowEvent *event) {
+    QWidget::showEvent(event); // Call base class implementation
+    loadAll(); // Refresh the combo box
+    qDebug() << "Storage Widget shown";
+}
 // Function to load all data
 void Storage::loadAll() {
     qDebug() << "Storage: Entering loadAll";

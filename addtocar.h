@@ -27,6 +27,7 @@ public:
     // Public member function declarations
     bool validateUserInput(); // Function to validate user input
     void reset(); // Function to reset the form
+
     friend class TestAddToCar;
 
 signals:
