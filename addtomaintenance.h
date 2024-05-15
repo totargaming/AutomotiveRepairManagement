@@ -27,6 +27,7 @@ public:
     bool validateUserInput(); // Method to validate user input
     void loadBox(); // Method to load the combo box
     void showEvent(QShowEvent *event); // Method to handle the show event
+    friend class TestAddToMaintenance;
 
 signals:
     void assigned(); // Signal to be emitted when a vehicle is assigned

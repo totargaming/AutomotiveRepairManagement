@@ -25,6 +25,7 @@ public:
     // Declare public methods
     bool validateUserInput() override; // Method to validate user input, overrides the method from Validation
     void reset(); // Method to reset the input fields
+    friend class TestAddToStaff;
 
 signals:
     void staffAdded(); // Signal to be emitted when a staff member is added

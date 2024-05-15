@@ -25,6 +25,7 @@ public:
     // Declare public methods
     bool validateUserInput(); // Method to validate user input
     void reset(); // Method to reset the input fields
+    friend class TestAddToStorage;
 
 signals:
     void partAdded(); // Signal to be emitted when a part is added

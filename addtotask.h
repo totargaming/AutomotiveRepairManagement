@@ -25,6 +25,7 @@ public:
     void loadBox(); // Method to load the combo boxes
     void showEvent(QShowEvent *event); // Method to handle the show event
     ~AddToTask(); // Destructor
+    friend class TestAddToTask;
 
 signals:
     void taskAdded(); // Signal to be emitted when a task is added

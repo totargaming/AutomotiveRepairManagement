@@ -33,6 +33,7 @@ public:
 
     // Destructor declaration
     ~RemoveFromCustomer();
+    friend class TestRemoveFromCustomer;
     
 signals:
     // Signal that is emitted when a customer is removed

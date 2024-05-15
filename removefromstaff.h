@@ -26,6 +26,7 @@ public:
     bool validateUserInput(); // Function to validate user input
     void loadBox(); // Function to load items into combo box
     void showEvent(QShowEvent *event); // Function to handle show event
+    friend class TestRemoveFromStaff;
 
 signals:
     void staffRemoved(); // Signal to be emitted when a staff member is removed
