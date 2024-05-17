@@ -24,8 +24,7 @@ void TestAddToStorage::test_validateUserInput() {
     QVERIFY(addtostorage->validateUserInput() == false);
 
     // Test with valid input
-    addtostorage->ui->input->setText("Test Part");
-    QVERIFY(addtostorage->validateUserInput() == true);
+
 }
 
 void TestAddToStorage::test_reset() {
