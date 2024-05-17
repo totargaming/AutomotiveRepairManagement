@@ -1,5 +1,7 @@
 #include "storage.h"
 #include "ui_storage.h"
+#include <QRegularExpression>
+
 
 // Constructor for the Storage class
 Storage::Storage(QWidget *parent)
@@ -48,6 +50,7 @@ void Storage::loadAll() {
 }
 
 // Function to handle the click event of the search button
+
 void Storage::on_searchBtn_clicked()
 {
     qDebug() << "Storage: Entering on_searchBtn_clicked";
@@ -57,18 +60,23 @@ void Storage::on_searchBtn_clicked()
 
     model = new QSqlQueryModel(); // Create a new QSqlQueryModel
 
+    // Validate input to accept only letters
+    QRegularExpression regex("^[a-zA-Z]*$");
+    if (!regex.match(partName).hasMatch()) {
+        qDebug() << "Storage: Invalid input. Only letters are allowed.";
+        return;
+    }
+
     if(partName.isEmpty()) { // If the partName is empty
         loadAll(); // Load all data
     }
     else {
-        QSqlQuery query(database); // Create a QSqlQuery with the database
-        query.prepare("SELECT * FROM Storage WHERE name LIKE :partName"); // Prepare the query
-        query.bindValue(":partName", "%" + partName + "%"); // Bind the value for partName
-        if (!query.exec()) { // If the query execution fails
-            qDebug() << "Storage: Failed to execute query" << query.lastError();
+        QString queryString = "SELECT * FROM Storage WHERE name LIKE '%" + partName + "%'";
+        model->setQuery(queryString, database); // Set the query for the model
+        if (model->lastError().isValid()) { // If the query execution fails
+            qDebug() << "Storage: Failed to execute query" << model->lastError();
             return; // Return from the function
         }
-        model->setQuery(query); // Set the query for the model
         ui->tableView->setModel(model); // Set the model for the tableView
     }
     qDebug() << "Storage: Exiting on_searchBtn_clicked";
@@ -86,7 +94,7 @@ void Storage::on_refreshBtn_clicked()
 void Storage::on_addBtn_clicked()
 {
     qDebug() << "Storage: Entering on_addBtn_clicked";
-    addToStorage_ptr->setWindowTitle("Storage: Add Parts"); // Set the window title for addToStorage_ptr
+    addToStorage_ptr->setWindowTitle("Storage: Import"); // Set the window title for addToStorage_ptr
     addToStorage_ptr->show(); // Show the addToStorage_ptr
     qDebug() << "Storage: Exiting on_addBtn_clicked";
 }

@@ -4,7 +4,7 @@
 // Constructor
 Car::Car(QWidget* parent): EntityList(parent){
     qDebug() << "Car: Initializing Car";
-    ui->nameSortBtn->setText("Load by Model"); // Set the text of the nameSortBtn to "Load by Model"
+    ui->nameSortBtn->setText("Sort by Model"); // Set the text of the nameSortBtn to "Load by Model"
     loadList(); // Load the list of cars
     addToCar_ptr = new AddToCar(); // Initialize the addToCar_ptr
     removeFromCar_ptr = new RemoveFromCar(); // Initialize the removeFromCar_ptr
@@ -17,14 +17,14 @@ Car::Car(QWidget* parent): EntityList(parent){
 // Method to add a car
 void Car::add() {
     qDebug() << "Car: add() called";
-    addToCar_ptr->setWindowTitle("Car: Register"); // Set the window title of addToCar_ptr to "Car: Register"
+    addToCar_ptr->setWindowTitle("Car Information: Register"); // Set the window title of addToCar_ptr to "Car: Register"
     addToCar_ptr->show(); // Show the addToCar_ptr window
 }
 
 // Method to remove a car
 void Car::remove() {
     qDebug() << "Car: remove() called";
-    removeFromCar_ptr->setWindowTitle("Car: Remove"); // Set the window title of removeFromCar_ptr to "Car: Remove"
+    removeFromCar_ptr->setWindowTitle("Car Information: Remove"); // Set the window title of removeFromCar_ptr to "Car: Remove"
     removeFromCar_ptr->show(); // Show the removeFromCar_ptr window
     ui->txtInfo->clear();
 }

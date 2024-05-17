@@ -28,7 +28,7 @@ AddToMaintenance::~AddToMaintenance()
 // Function to validate user input
 bool AddToMaintenance::validateUserInput() {
     qDebug() << "Validating user input";
-    
+
     // Check if the model box is empty
     if(ui->modelBox->currentText().isEmpty()) {
         QMessageBox::warning(this, "Validation Error", "Model box is empty");
@@ -112,6 +112,7 @@ void AddToMaintenance::on_addBtn_clicked() {
     QMessageBox::information(this, "Success", "Maintenance information added successfully.");
     loadBox(); // Refresh the combo box
     emit assigned(); // Emit the assigned signal
+    close();
 }
 
 // Function to handle the show event

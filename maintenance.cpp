@@ -44,32 +44,12 @@ void Maintenance::loadAll() {
         return;
     }
 
-    QSqlQuery query(database);  // Create a query on the database
-    query.prepare("SELECT Model FROM Vehicle WHERE date(StartDate) = date(:selectedDate)");  // Prepare the query
-    query.bindValue(":selectedDate", selectedDate);  // Bind the selected date to the query
-
-    // Execute the query
-    if (!query.exec()) {
-        qDebug() << "Maintenance: Failed to execute query" << query.lastError();  // Debug statement indicating the query failed
-        return;
-    }
-
     QSqlQueryModel* startDateModel = new QSqlQueryModel();  // Create a new model for the start date
-    startDateModel->setQuery(query);  // Set the query for the model
+    startDateModel->setQuery("SELECT Model FROM Vehicle WHERE date(StartDate) = date('" + selectedDate + "')", database);
     ui->startDateTable->setModel(startDateModel);  // Set the model for the start date table
 
-    // Prepare the query for the deadline
-    query.prepare("SELECT Model FROM Vehicle WHERE date(Deadline) = date(:selectedDate)");
-    query.bindValue(":selectedDate", selectedDate);
-
-    // Execute the query
-    if (!query.exec()) {
-        qDebug() << "Maintenance: Failed to execute query" << query.lastError();  // Debug statement indicating the query failed
-        return;
-    }
-
     QSqlQueryModel* deadlineModel = new QSqlQueryModel();  // Create a new model for the deadline
-    deadlineModel->setQuery(query);  // Set the query for the model
+    deadlineModel->setQuery("SELECT Model FROM Vehicle WHERE date(Deadline) = date('" + selectedDate + "')", database);
     ui->deadlineTable->setModel(deadlineModel);  // Set the model for the deadline table
 
     qDebug() << "Maintenance: Exiting loadAll";  // Debug statement indicating the end of the function
@@ -87,14 +67,14 @@ void Maintenance::on_calendarWidget_selectionChanged()
 // Function to handle the click event of the add button
 void Maintenance::on_addBtn_clicked()
 {
-    addToMaintenance_ptr->setWindowTitle("Maintenance: Assign");  // Set the window title for the add to maintenance window
+    addToMaintenance_ptr->setWindowTitle("Maintenance Scheduler: Assign");  // Set the window title for the add to maintenance window
     addToMaintenance_ptr->show();  // Show the add to maintenance window
 }
 
 // Function to handle the click event of the remove button
 void Maintenance::on_removeBtn_clicked()
 {
-    removeFromMaintenance_ptr->setWindowTitle("Maintenance: Dismiss");  // Set the window title for the remove from maintenance window
+    removeFromMaintenance_ptr->setWindowTitle("Maintenance Scheduler: Dismiss");  // Set the window title for the remove from maintenance window
     removeFromMaintenance_ptr->show();  // Show the remove from maintenance window
     ui->txtInfo->clear();
 }

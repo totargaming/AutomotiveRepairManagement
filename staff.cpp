@@ -21,14 +21,14 @@ void Staff::showEvent(QShowEvent *event) {
 // Function to add a staff member
 void Staff::add() {
     qDebug() << "Staff: add() called";
-    addToStaff_ptr->setWindowTitle("Staff: Hire"); // Set the window title
+    addToStaff_ptr->setWindowTitle("Staff: Recruit"); // Set the window title
     addToStaff_ptr->show(); // Show the window
 }
 
 // Function to remove a staff member
 void Staff::remove() {
     qDebug() << "Staff: remove() called";
-    removeFromStaff_ptr->setWindowTitle("Staff: Fire"); // Set the window title
+    removeFromStaff_ptr->setWindowTitle("Staff Information: Layoff"); // Set the window title
     removeFromStaff_ptr->show(); // Show the window
     ui->txtInfo->clear(); // Clear the info text
 }

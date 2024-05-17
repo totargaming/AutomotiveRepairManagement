@@ -9,3 +9,5 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 }
+//qmake: qmake.exe AutomotiveRepairManagement.pro
+//Make: mingw32-make.exe -j12 in E:\Workspace\AutomotiveRepairManagement\DebugVersion

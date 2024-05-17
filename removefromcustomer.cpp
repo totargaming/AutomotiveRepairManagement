@@ -145,5 +145,6 @@ void RemoveFromCustomer::on_removeBtn_clicked()
 
     loadBox(); // Refresh the combo box
     emit customerRemoved();
+    close();
 }
 

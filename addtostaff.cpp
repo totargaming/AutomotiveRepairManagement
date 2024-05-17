@@ -114,4 +114,5 @@ void AddToStaff::on_addBtn_clicked()
     qDebug() << "Staff information added successfully";
 
     reset(); // Reset the input fields
+    close();
 }

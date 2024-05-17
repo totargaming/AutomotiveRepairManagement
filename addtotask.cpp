@@ -122,4 +122,5 @@ void AddToTask::on_addBtn_clicked()
     emit taskAdded(); // Emit the taskAdded signal
 
     loadBox(); // Refresh the combo boxes
+    close();
 }

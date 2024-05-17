@@ -25,9 +25,9 @@ void Customer::showEvent(QShowEvent *event) {
 }
 // Remove function
 void Customer::remove() {
-    qDebug() << "Car: remove() called";
+    qDebug() << "Customer: remove() called";
     // Set the window title of removeFromCustomer_ptr
-    removeFromCustomer_ptr->setWindowTitle("Car: Remove");
+    removeFromCustomer_ptr->setWindowTitle("Customer Information: Remove");
     // Show the removeFromCustomer_ptr window
     removeFromCustomer_ptr->show();
     ui->txtInfo->clear();
@@ -46,7 +46,7 @@ void Customer::showInfo(const QModelIndex &index) {
     QSqlDatabase database = QSqlDatabase::database("DB");
     // Check if the database is open
     if (!database.isOpen()) {
-        qDebug() << "Car: Database is not open!";
+        qDebug() << "Customer: Database is not open!";
         return;
     }
 
@@ -56,7 +56,7 @@ void Customer::showInfo(const QModelIndex &index) {
     query.bindValue(":UserId", UserId);
     // Execute the query
     if (!query.exec()) {
-        qDebug() << "Car: Failed to execute query(1)" << query.lastError();
+        qDebug() << "Customer: Failed to execute query(1)" << query.lastError();
         return;
     }
 
@@ -73,7 +73,7 @@ void Customer::showInfo(const QModelIndex &index) {
         userQuery.bindValue(":VehicleId", vehicleId);
         // Execute the query
         if (!userQuery.exec()) {
-            qDebug() << "Car: Failed to execute user query(2)" << userQuery.lastError();
+            qDebug() << "Customer: Failed to execute user query(2)" << userQuery.lastError();
             return;
         }
 

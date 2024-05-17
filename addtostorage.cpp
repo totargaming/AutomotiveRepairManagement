@@ -50,6 +50,7 @@ void addToStorage::on_addBtn_clicked()
 
         // Reset the input fields
         reset();
+        close();
     }
 }
 

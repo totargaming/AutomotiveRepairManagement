@@ -62,7 +62,12 @@ bool AddToCar::validateUserInput()
         QMessageBox::warning(this, "Input Error", "Model and Brand should contain only alphanumeric characters.");
         return false;
     }
-
+    QRegularExpression rxName("^[a-zA-Z ]*$");  // Regex for alphabetic characters and spaces
+    if (!rxName.match(customerName).hasMatch())
+    {
+        QMessageBox::warning(this, "Input Error", "Customer Name should contain only alphabetic characters and spaces.");
+        return false;
+    }
     qDebug() << "User input validated";
     return true;
 }
@@ -140,4 +145,5 @@ void AddToCar::on_addBtn_clicked()
 
     QMessageBox::information(this, "Success", "Vehicle and Customer information added successfully.");
     reset();
+    close();
 }

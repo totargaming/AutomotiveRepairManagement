@@ -5,6 +5,9 @@
 TaskList::TaskList(QWidget* parent): EntityList(parent) {
     qDebug() << "TaskList: Initializing TaskList";
     addToTask_ptr = new AddToTask(); // Create a new AddToTask object
+    ui->nameSortBtn->setText("Sort by Staff Name"); // Change the text of the remove button
+    ui->idSortBtn->setText("Sort by Model Name"); // Change the text of the remove button
+
     // Connect the taskAdded signal from addToTask_ptr to a lambda function that loads the task list
     connect(addToTask_ptr, &AddToTask::taskAdded, this, [this]() {
         this->loadList(this->taskType());
@@ -87,7 +90,7 @@ void TaskList::loadList(){
 
 // Function to get the task type
 QString TaskList::taskType() {
-    // This function is not implemented in the provided code
+    return "";
 }
 
 // Function to load the task list based on the task type
@@ -114,6 +117,8 @@ void TaskList::loadList(QString taskType) {
     }
 
     model->setQuery(queryString, database); // Set the query for the model
+    model->setHeaderData(1, Qt::Horizontal, "Staff Name");
+
     ui->tableView->setModel(model); // Set the model for the table view
     qDebug() << "TaskList: Exiting loadList";
 }

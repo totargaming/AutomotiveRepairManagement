@@ -135,4 +135,5 @@ void RemoveFromCar::on_removeBtn_clicked()
 
     loadBox(); // Refresh the combo box.
     emit carRemoved(); // Emit the carRemoved signal.
+    close();
 }

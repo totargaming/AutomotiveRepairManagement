@@ -55,7 +55,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_Customer_clicked()
 {
     // Set the window title and show the window.
-    customer_ptr->setWindowTitle("Customer");
+    customer_ptr->setWindowTitle("Customer Information");
     customer_ptr->show();
 }
 
@@ -63,7 +63,7 @@ void MainWindow::on_Customer_clicked()
 void MainWindow::on_Maintenance_clicked()
 {
     // Set the window title and show the window.
-    maintenance_ptr->setWindowTitle("Customer");
+    maintenance_ptr->setWindowTitle("Maintenance Scheduler");
     maintenance_ptr->show();
 }
 
@@ -71,7 +71,7 @@ void MainWindow::on_Maintenance_clicked()
 void MainWindow::on_Staff_clicked()
 {
     // Set the window title and show the window.
-    staff_ptr->setWindowTitle("Staff");
+    staff_ptr->setWindowTitle("Staff Information");
     staff_ptr->show();
 }
 
@@ -79,7 +79,7 @@ void MainWindow::on_Staff_clicked()
 void MainWindow::on_Storage_clicked()
 {
     // Set the window title and show the window.
-    storage_ptr->setWindowTitle("Storage");
+    storage_ptr->setWindowTitle("Storage Information");
     storage_ptr->show();
 }
 
@@ -91,8 +91,8 @@ void MainWindow::on_Task_clicked()
     QRect screenGeometry = primaryScreen->geometry();
 
     // Calculate the width, height, and positioning for both windows.
-    int windowWidth = 604; // Adjust to your window width.
-    int windowHeight = 396; // Adjust to your window height.
+    int windowWidth = 634; // Adjust to your window width.
+    int windowHeight = 358; // Adjust to your window height.
     int gap = 10; // Adjust the gap as needed.
 
     // Calculate the position for the first window (centered).
@@ -109,8 +109,8 @@ void MainWindow::on_Task_clicked()
     deliveryTask_ptr->setGeometry(x2, y1, windowWidth, windowHeight);
 
     // Set the window titles and show the windows.
-    maintenanceTask_ptr->setWindowTitle("Maintenance Task Window");
-    deliveryTask_ptr->setWindowTitle("Delivery Task Window");
+    maintenanceTask_ptr->setWindowTitle("Maintenance Task");
+    deliveryTask_ptr->setWindowTitle("Delivery Task");
     maintenanceTask_ptr->show();
     deliveryTask_ptr->show();
 }
@@ -119,6 +119,12 @@ void MainWindow::on_Task_clicked()
 void MainWindow::on_Car_clicked()
 {
     // Set the window title and show the window.
-    car_ptr->setWindowTitle("Car");
+    car_ptr->setWindowTitle("Car Information");
     car_ptr->show();
 }
+
+void MainWindow::on_exitBtn_clicked()
+{
+    close();
+}
+

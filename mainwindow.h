@@ -46,6 +46,8 @@ private slots:
     void on_Task_clicked();
     void on_Car_clicked();
 
+    void on_exitBtn_clicked();
+
 private:
     // Declare a pointer to the MainWindow class in the Ui namespace.
     Ui::MainWindow *ui;

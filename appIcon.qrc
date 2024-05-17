@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icons/Car.png</file>
+        <file>icons/Customer.png</file>
+        <file>icons/Main.png</file>
+        <file>icons/Staff.png</file>
+        <file>icons/Storage.png</file>
+        <file>icons/TaskAssignment.png</file>
+        <file>icons/scheduler.png</file>
+        <file>icons/background.jpg</file>
+        <file>icons/exit.png</file>
+        <file>icons/exit.jpg</file>
+        <file>icons/background2.png</file>
+        <file>icons/default.xml</file>
+    </qresource>
+</RCC>

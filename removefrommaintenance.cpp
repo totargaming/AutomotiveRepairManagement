@@ -189,4 +189,5 @@ void RemoveFromMaintenance::on_removeBtn_clicked()
 
     // Emit signal that maintenance has been removed
     emit maintenanceRemoved();
+    close();
 }

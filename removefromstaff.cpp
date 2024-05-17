@@ -124,4 +124,5 @@ void RemoveFromStaff::on_removeBtn_clicked()
 
     loadBox(); // Refresh the combo box
     emit staffRemoved(); // Emit the signal
+    close();
 }
