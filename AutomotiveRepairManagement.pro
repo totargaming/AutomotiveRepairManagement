@@ -79,3 +79,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     appIcon.qrc
+
+
+# use qt terminal
+# IF There is no MakeFile yet and want to generate stash: C:\Qt\6.6.2\mingw_64\bin\qmake.exe D:\AutomotiveRepairManagement\AutomotiveRepairManagement.pro -spec win32-g++ "CONFIG+=debug"
+# If there is Make File and some change is made: C:\Qt\Tools\mingw1120_64\bin\mingw32-make.exe -f D:/AutomotiveRepairManagement/Makefile qmake_all
+# Build prj: C:\Qt\Tools\mingw1120_64\bin\mingw32-make.exe -j12
