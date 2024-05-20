@@ -36,6 +36,8 @@ private slots:
     void on_removeBtn_clicked(); // Slot for remove button click event
     void on_removeList_currentTextChanged(const QString &text); // Slot for change in selected item in combo box
 
+    void on_cancelBtn_clicked();
+
 private:
     // Declare private member variables
     Ui::RemoveFromStaff *ui; // Pointer to UI object

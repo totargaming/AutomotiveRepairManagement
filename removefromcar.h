@@ -45,6 +45,8 @@ private slots:
     // Slot that is invoked when the remove button is clicked
     void on_removeBtn_clicked();
 
+    void on_cancelBtn_clicked();
+
 private:
     // Pointer to the UI object
     Ui::RemoveFromCar *ui;

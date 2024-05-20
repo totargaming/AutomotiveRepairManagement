@@ -113,3 +113,9 @@ bool addToStorage::validateUserInput() {
 
     return true;
 }
+
+void addToStorage::on_cancelBtn_clicked()
+{
+    close();
+}
+

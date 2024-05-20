@@ -147,3 +147,9 @@ void AddToCar::on_addBtn_clicked()
     reset();
     close();
 }
+
+void AddToCar::on_cancelBtn_clicked()
+{
+    close();
+}
+

@@ -191,3 +191,9 @@ void RemoveFromMaintenance::on_removeBtn_clicked()
     emit maintenanceRemoved();
     close();
 }
+
+void RemoveFromMaintenance::on_removeBtn_2_clicked()
+{
+    close();
+}
+

@@ -5,6 +5,7 @@
 Staff::Staff(QWidget *parent): EntityList(parent) {
     qDebug() << "Staff: Initializing Staff";
     loadList(); // Load the list of staff
+    ui->label->setText("STAFF INFO");
     addToStaff_ptr = new AddToStaff(); // Create a new instance of AddToStaff
     removeFromStaff_ptr = new RemoveFromStaff(); // Create a new instance of RemoveFromStaff
     // Connect the staffAdded signal from addToStaff_ptr to the loadList slot in this class

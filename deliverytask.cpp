@@ -6,6 +6,7 @@ DeliveryTask::DeliveryTask(QWidget *parent) : TaskList(parent)
 {
     ui->addBtn->setVisible(false); // Hide the add button
     ui->removeBtn->setText("Car Delivered!"); // Change the text of the remove button
+    ui->label->setText("DELIVERY TASK");
 
     TaskList::loadList(); // Load the list from the TaskList class
 }

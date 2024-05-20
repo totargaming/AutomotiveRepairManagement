@@ -35,6 +35,8 @@ signals:
 private slots:
     void on_addBtn_clicked(); // Slot to handle the add button click event
 
+    void on_cancelBtn_clicked();
+
 private:
     Ui::AddToMaintenance *ui; // Pointer to the UI
     QSqlDatabase database; // Database object

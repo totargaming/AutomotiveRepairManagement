@@ -126,3 +126,9 @@ void RemoveFromStaff::on_removeBtn_clicked()
     emit staffRemoved(); // Emit the signal
     close();
 }
+
+void RemoveFromStaff::on_cancelBtn_clicked()
+{
+    close();
+}
+

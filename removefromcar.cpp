@@ -137,3 +137,9 @@ void RemoveFromCar::on_removeBtn_clicked()
     emit carRemoved(); // Emit the carRemoved signal.
     close();
 }
+
+void RemoveFromCar::on_cancelBtn_clicked()
+{
+    close();
+}
+

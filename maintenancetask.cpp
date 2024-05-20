@@ -6,6 +6,8 @@
 MaintenanceTask::MaintenanceTask(QWidget* parent) : TaskList(parent) {
     // Change the text of the remove button to "To Delivery!".
     ui->removeBtn->setText("To Delivery!");
+    ui->label->setText("MAINTENANCE INFO");
+
     // Load the task list.
     TaskList::loadList();
 }

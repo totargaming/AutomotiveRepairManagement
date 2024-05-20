@@ -47,6 +47,8 @@ private slots:
     // Declare a slot that will be called when a cell in the deadline table is clicked.
     void on_deadlineTable_clicked(const QModelIndex &index);
 
+    void on_homeBtn_clicked();
+
 private:
     // Declare a pointer to the user interface for the Maintenance class.
     Ui::Maintenance *ui;

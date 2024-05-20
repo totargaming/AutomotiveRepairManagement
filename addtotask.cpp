@@ -124,3 +124,9 @@ void AddToTask::on_addBtn_clicked()
     loadBox(); // Refresh the combo boxes
     close();
 }
+
+void AddToTask::on_cancelBtn_clicked()
+{
+    close();
+}
+

@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>627</width>
-    <height>378</height>
+    <width>331</width>
+    <height>663</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>331</width>
+    <height>663</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>331</width>
+    <height>663</height>
+   </size>
   </property>
   <property name="palette">
    <palette>
@@ -505,7 +517,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>371</width>
+     <width>301</width>
      <height>231</height>
     </rect>
    </property>
@@ -551,8 +563,8 @@
   <widget class="QTableView" name="startDateTable">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>270</y>
+     <x>20</x>
+     <y>310</y>
      <width>111</width>
      <height>91</height>
     </rect>
@@ -584,8 +596,8 @@
   <widget class="QLabel" name="startDateLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>250</y>
+     <x>20</x>
+     <y>290</y>
      <width>101</width>
      <height>16</height>
     </rect>
@@ -602,8 +614,8 @@
   <widget class="QTableView" name="deadlineTable">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>270</y>
+     <x>200</x>
+     <y>310</y>
      <width>111</width>
      <height>91</height>
     </rect>
@@ -635,8 +647,8 @@
   <widget class="QLabel" name="deadlineLabel">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>250</y>
+     <x>200</x>
+     <y>290</y>
      <width>101</width>
      <height>16</height>
     </rect>
@@ -653,8 +665,8 @@
   <widget class="QTextEdit" name="txtInfo">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>40</y>
+     <x>50</x>
+     <y>430</y>
      <width>221</width>
      <height>201</height>
     </rect>
@@ -672,8 +684,8 @@
   <widget class="QLabel" name="informationLabel">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>20</y>
+     <x>110</x>
+     <y>410</y>
      <width>101</width>
      <height>16</height>
     </rect>
@@ -690,8 +702,8 @@
   <widget class="QPushButton" name="addBtn">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>270</y>
+     <x>220</x>
+     <y>250</y>
      <width>91</width>
      <height>31</height>
     </rect>
@@ -708,8 +720,8 @@
   <widget class="QPushButton" name="removeBtn">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>320</y>
+     <x>20</x>
+     <y>250</y>
      <width>91</width>
      <height>31</height>
     </rect>
@@ -723,7 +735,38 @@
     <string>Remove</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="homeBtn">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>330</y>
+     <width>41</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(75, 85, 85);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="appIcon.qrc">
+     <normaloff>:/icon/icons/Main.png</normaloff>:/icon/icons/Main.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>25</width>
+     <height>25</height>
+    </size>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="appIcon.qrc"/>
+ </resources>
  <connections/>
 </ui>

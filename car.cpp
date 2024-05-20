@@ -5,6 +5,7 @@
 Car::Car(QWidget* parent): EntityList(parent){
     qDebug() << "Car: Initializing Car";
     ui->nameSortBtn->setText("Sort by Model"); // Set the text of the nameSortBtn to "Load by Model"
+    ui->label->setText("CAR INFO");
     loadList(); // Load the list of cars
     addToCar_ptr = new AddToCar(); // Initialize the addToCar_ptr
     removeFromCar_ptr = new RemoveFromCar(); // Initialize the removeFromCar_ptr

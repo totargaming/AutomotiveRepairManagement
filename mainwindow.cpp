@@ -54,8 +54,12 @@ MainWindow::~MainWindow()
 // Define the slot for the Customer button click event.
 void MainWindow::on_Customer_clicked()
 {
-    // Set the window title and show the window.
     customer_ptr->setWindowTitle("Customer Information");
+    QPoint mainWindowPos = this->pos();
+    QSize customerWindowSize = customer_ptr->size();
+    int x = mainWindowPos.x() - customerWindowSize.width();
+    int y = mainWindowPos.y();
+    customer_ptr->move(x+10, y);
     customer_ptr->show();
 }
 
@@ -64,6 +68,21 @@ void MainWindow::on_Maintenance_clicked()
 {
     // Set the window title and show the window.
     maintenance_ptr->setWindowTitle("Maintenance Scheduler");
+
+    // Get the position of the main window
+    QPoint mainWindowPos = this->pos();
+
+    // Get the size of the main window
+    QSize mainWindowSize = this->size();
+
+    // Calculate the position of the maintenance window
+    int x = mainWindowPos.x() + mainWindowSize.width();
+    int y = mainWindowPos.y();
+
+    // Move the maintenance window to the calculated position
+    maintenance_ptr->move(x-10, y-110);
+
+    // Show the maintenance window
     maintenance_ptr->show();
 }
 
@@ -72,6 +91,21 @@ void MainWindow::on_Staff_clicked()
 {
     // Set the window title and show the window.
     staff_ptr->setWindowTitle("Staff Information");
+
+    // Get the position of the main window
+    QPoint mainWindowPos = this->pos();
+
+    // Get the size of the staff window
+    QSize staffWindowSize = staff_ptr->size();
+
+    // Calculate the position of the staff window
+    int x = mainWindowPos.x() - staffWindowSize.width();
+    int y = mainWindowPos.y();
+
+    // Move the staff window to the calculated position
+    staff_ptr->move(x+10, y);
+
+    // Show the staff window
     staff_ptr->show();
 }
 
@@ -118,8 +152,12 @@ void MainWindow::on_Task_clicked()
 // Define the slot for the Car button click event.
 void MainWindow::on_Car_clicked()
 {
-    // Set the window title and show the window.
     car_ptr->setWindowTitle("Car Information");
+    QPoint mainWindowPos = this->pos();
+    QSize carWindowSize = car_ptr->size();
+    int x = mainWindowPos.x() - carWindowSize.width();
+    int y = mainWindowPos.y();
+    car_ptr->move(x, y);
     car_ptr->show();
 }
 

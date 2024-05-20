@@ -116,3 +116,9 @@ void AddToStaff::on_addBtn_clicked()
     reset(); // Reset the input fields
     close();
 }
+
+void AddToStaff::on_cancelBtn_clicked()
+{
+    close();
+}
+

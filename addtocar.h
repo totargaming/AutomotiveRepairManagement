@@ -38,6 +38,8 @@ private slots:
     // Slot that is connected to the click event of the add button
     void on_addBtn_clicked();
 
+    void on_cancelBtn_clicked();
+
 private:
     // Private member variables
     Ui::AddToCar *ui; // Pointer to the user interface

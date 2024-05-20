@@ -148,3 +148,9 @@ void RemoveFromCustomer::on_removeBtn_clicked()
     close();
 }
 
+
+void RemoveFromCustomer::on_cancelBtn_clicked()
+{
+    close();
+}
+

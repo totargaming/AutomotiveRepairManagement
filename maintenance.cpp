@@ -183,3 +183,9 @@ void Maintenance::on_deadlineTable_clicked(const QModelIndex &index)
     ui->txtInfo->setText("Model: " + model + "\nStaff: " + staff + "\nDateAssigned: " + dateAssigned + "\nDeadline: " + deadline + "\nAssigned: " + assigned + "\nFinished: " + finished + "\nDateRemaining: " + dateRemaining);
 }
 
+
+void Maintenance::on_homeBtn_clicked()
+{
+    close();
+}
+

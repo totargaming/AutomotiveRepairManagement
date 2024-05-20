@@ -114,3 +114,9 @@ void PartUpdate::on_removeList_currentTextChanged(const QString &text)
         ui->quantityReport->setText("Last updated quantity: " + QString::number(quantity)); // Set the text of the quantity report.
     }
 }
+
+void PartUpdate::on_cancelBtn_clicked()
+{
+    close();
+}
+

@@ -121,3 +121,9 @@ void AddToMaintenance::showEvent(QShowEvent *event) {
     loadBox(); // Refresh the combo box
     qDebug() << "Dialog shown";
 }
+
+void AddToMaintenance::on_cancelBtn_clicked()
+{
+    close();
+}
+

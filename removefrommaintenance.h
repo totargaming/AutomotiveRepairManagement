@@ -50,7 +50,9 @@ public :
   // Declare slot to handle change in selected item in combo box
   void on_removeList_currentTextChanged(const QString &text);
 
- private:
+  void on_removeBtn_2_clicked();
+
+  private:
   // Declare pointer to UI object
   Ui::RemoveFromMaintenance *ui;
 

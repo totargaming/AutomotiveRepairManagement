@@ -38,6 +38,8 @@ private slots:
     void on_updateBtn_clicked();
     void on_removeList_currentTextChanged(const QString &text);
 
+    void on_cancelBtn_clicked();
+
 private:
     // Declare private member variables.
     Ui::PartUpdate *ui; // Pointer to the UI.

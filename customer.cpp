@@ -6,6 +6,8 @@ Customer::Customer(QWidget* parent): EntityList(parent) {
     qDebug() << "Customer: Initializing Customer";
     // Hide the add button
     ui->addBtn->setVisible(false);
+    ui->label->setText("CUSTOMER INFO");
+
     // Load the list of customers
     loadList();
     // Create a new RemoveFromCustomer object

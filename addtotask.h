@@ -35,6 +35,8 @@ private slots:
 
     void on_addBtn_clicked(); // Slot to handle the clicked signal of the add button
 
+    void on_cancelBtn_clicked();
+
 private:
     Ui::AddToTask *ui; // Pointer to the UI
     QSqlDatabase database; // Database object
