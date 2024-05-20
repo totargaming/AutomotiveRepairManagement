@@ -156,6 +156,7 @@
    <string notr="true">background-image: url(:/icon/icons/background.jpg);
 background-repeat: no-repeat;
 background-position: center;
+color: black;
 
 </string>
   </property>
@@ -212,6 +213,9 @@ background-position: center;
       <bold>true</bold>
      </font>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To use the tool correctly:&lt;/p&gt;&lt;p&gt;- Firstly, schedule maintenance time for automotive(Maintenance Scheduler)&lt;/p&gt;&lt;p&gt;- Maintenance Task should be used for assigning Staff for a specific vehicle.&lt;/p&gt;&lt;p&gt;- After being done by Maintenance Task, Vehicle should be moved to Delivery Task to deliver customer's vehicle back.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
     </property>
@@ -219,7 +223,7 @@ background-position: center;
      <bool>false</bool>
     </property>
     <property name="text">
-     <string>TOOLS</string>
+     <string>TOOLS (❓)</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

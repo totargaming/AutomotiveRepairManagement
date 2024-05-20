@@ -12,5 +12,6 @@
         <file>icons/exit.jpg</file>
         <file>icons/background2.png</file>
         <file>icons/default.xml</file>
+        <file>icons/questionmark.jpg</file>
     </qresource>
 </RCC>

@@ -8,6 +8,7 @@ Maintenance::Maintenance(QWidget *parent)
 {
     ui->setupUi(this);  // Set up the UI for this instance of the class
     calendar = ui->calendarWidget;  // Get the calendar widget from the UI
+    markCalendar();
     loadAll();  // Load all data
 
     // Initialize the pointers for adding and removing from maintenance
@@ -28,10 +29,61 @@ Maintenance::~Maintenance()
 }
 void Maintenance::showEvent(QShowEvent *event) {
     QWidget::showEvent(event); // Call base class implementation
+    ui->txtInfo->clear();
+    ui->calendarWidget->setSelectedDate(QDate::currentDate());
+    markCalendar();
+
     loadAll(); // Refresh the combo box
     qDebug() << "Maintenance Widget shown";
 }
+void Maintenance::markCalendar() {
+    QSqlDatabase database = QSqlDatabase::database("DB");  // Get the database
 
+    // Check if the database is open
+    if (!database.isOpen()) {
+        qDebug() << "Maintenance: Database is not open!";  // Debug statement indicating the database is not open
+        return;
+    }
+    qDebug() << "Maintenance: Database is open";  // Debug statement indicating the database is open
+
+    QTextCharFormat startDateFormat;
+    startDateFormat.setBackground(Qt::green);
+
+    // Create the format for deadlines (red background)
+    QTextCharFormat deadlineFormat;
+    deadlineFormat.setBackground(Qt::red);
+
+    // Query the database to get all start dates
+    QSqlQuery startDateQuery(database);
+    startDateQuery.prepare("SELECT StartDate FROM Vehicle");
+    if (startDateQuery.exec()) {
+        qDebug() << "Maintenance: Start date query executed successfully";  // Debug statement indicating the start date query was successful
+        while (startDateQuery.next()) {
+            QDate startDate = QDate::fromString(startDateQuery.value(0).toString(), "yyyy-MM-dd");
+            calendar->setDateTextFormat(startDate, startDateFormat);
+            qDebug() << "Maintenance: Marked start date " << startDate;  // Debug statement indicating a start date was marked
+        }
+    } else {
+        qDebug() << "Maintenance: Start date query failed";  // Debug statement indicating the start date query failed
+    }
+
+    // Query the database to get all deadlines
+    QSqlQuery deadlineQuery(database);
+    deadlineQuery.prepare("SELECT Deadline FROM Vehicle");
+    if (deadlineQuery.exec()) {
+        qDebug() << "Maintenance: Deadline query executed successfully";  // Debug statement indicating the deadline query was successful
+        while (deadlineQuery.next()) {
+            QDate deadline = QDate::fromString(deadlineQuery.value(0).toString(), "yyyy-MM-dd");
+            ui->calendarWidget->setDateTextFormat(deadline, deadlineFormat);
+            qDebug() << "Maintenance: Marked deadline " << deadline;  // Debug statement indicating a deadline was marked
+        }
+    } else {
+        qDebug() << "Maintenance: Deadline query failed";  // Debug statement indicating the deadline query failed
+    }
+
+    calendar->update();
+    qDebug() << "Maintenance: Calendar updated";  // Debug statement indicating the calendar was updated
+}
 // Function to load all data
 void Maintenance::loadAll() {
     qDebug() << "Maintenance: Entering loadAll";  // Debug statement indicating the start of the function

@@ -102,6 +102,8 @@ void DeliveryTask::remove()
 }
 void DeliveryTask::showEvent(QShowEvent *event) {
     QWidget::showEvent(event); // Call base class implementation
+    ui->txtInfo->clear();
+
     loadList(); // Refresh the combo box
     qDebug() << "DeliveryTask Widget shown";
 }

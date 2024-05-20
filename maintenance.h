@@ -27,7 +27,7 @@ public:
     // Declare a function to load all maintenance data.
     void loadAll();
     void showEvent(QShowEvent *event); // Method to handle the show event
-
+    void markCalendar();
     // Declare the destructor for the Maintenance class.
     ~Maintenance();
 

@@ -16,6 +16,7 @@ Staff::Staff(QWidget *parent): EntityList(parent) {
 
 void Staff::showEvent(QShowEvent *event) {
     QWidget::showEvent(event); // Call base class implementation
+    ui->txtInfo->clear();
     loadList(); // Refresh the combo box
     qDebug() << "Staff Widget shown";
 }

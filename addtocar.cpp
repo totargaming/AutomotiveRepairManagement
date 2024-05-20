@@ -56,7 +56,7 @@ bool AddToCar::validateUserInput()
         return false;
     }
 
-    QRegularExpression rx("^[a-zA-Z0-9]*$");  // Regex for alphanumeric characters
+    QRegularExpression rx("^[a-zA-Z0-9 ]*$");  // Regex for alphanumeric characters
     if (!rx.match(model).hasMatch() || !rx.match(brand).hasMatch())
     {
         QMessageBox::warning(this, "Input Error", "Model and Brand should contain only alphanumeric characters.");

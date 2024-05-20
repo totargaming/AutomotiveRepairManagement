@@ -590,7 +590,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Remove</string>
+    <string>Cancel</string>
    </property>
   </widget>
   <widget class="QLabel" name="idReport_2">

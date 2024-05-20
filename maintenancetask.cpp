@@ -18,6 +18,8 @@ QString MaintenanceTask::taskType() {
 }
 void MaintenanceTask::showEvent(QShowEvent *event) {
     QWidget::showEvent(event); // Call base class implementation
+    ui->txtInfo->clear();
+
     loadList(); // Refresh the combo box
     qDebug() << "MaintenanceTask Widget shown";
 }
@@ -62,6 +64,7 @@ void MaintenanceTask::remove() {
     // Reload the task list.
 
     TaskList::loadList();
+    ui->txtInfo->clear();
 }
 
 // Define the destructor for the MaintenanceTask class.

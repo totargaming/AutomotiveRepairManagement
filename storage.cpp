@@ -31,6 +31,7 @@ Storage::~Storage()
 }
 void Storage::showEvent(QShowEvent *event) {
     QWidget::showEvent(event); // Call base class implementation
+    ui->input->clear();
     loadAll(); // Refresh the combo box
     qDebug() << "Storage Widget shown";
 }

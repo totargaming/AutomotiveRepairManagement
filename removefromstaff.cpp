@@ -117,11 +117,14 @@ void RemoveFromStaff::on_removeBtn_clicked()
     query.bindValue(":Name", selectedItem); // Bind the value
     if (query.exec()) { // Execute the query
         qDebug() << "RemoveFromStaff: Staff member deleted successfully";
+        QMessageBox::information(this, "Success", "Staff removed successfully");
+
     } else {
         qDebug() << "RemoveFromStaff: Failed to delete staff member" << query.lastError().text();
+        QMessageBox::critical(this, "Error", "Failed to remove staff: " + query.lastError().text());
+
         return;
     }
-
     loadBox(); // Refresh the combo box
     emit staffRemoved(); // Emit the signal
     close();

@@ -130,6 +130,8 @@ void Car::showInfo(const QModelIndex &index) {
 }
 void Car::showEvent(QShowEvent *event) {
     QWidget::showEvent(event); // Call base class implementation
+    ui->txtInfo->clear();
+
     loadList(); // Refresh the combo box
     qDebug() << "Car Widget shown";
 }

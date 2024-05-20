@@ -22,6 +22,8 @@ void Customer::add() {
 }
 void Customer::showEvent(QShowEvent *event) {
     QWidget::showEvent(event); // Call base class implementation
+    ui->txtInfo->clear();
+
     loadList(); // Refresh the combo box
     qDebug() << "Customer Widget shown";
 }
