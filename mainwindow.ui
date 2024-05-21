@@ -183,6 +183,9 @@ color: black;
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px; border: 1px solid orange;</string>
+    </property>
     <property name="text">
      <string>CAR</string>
     </property>
@@ -222,6 +225,9 @@ color: black;
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 5px;</string>
+    </property>
     <property name="text">
      <string>TOOLS (❓)</string>
     </property>
@@ -246,6 +252,9 @@ color: black;
     </property>
     <property name="layoutDirection">
      <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 5px;</string>
     </property>
     <property name="text">
      <string>AUTOMOTIVE REPAIR MANAGEMENT</string>
@@ -472,8 +481,7 @@ color: black;
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: transparent; border: none;
-border-radius: 10px;</string>
+     <string notr="true">border-radius: 15px;</string>
     </property>
     <property name="text">
      <string/>
@@ -514,6 +522,9 @@ border-radius: 10px;</string>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 5px;</string>
+    </property>
     <property name="text">
      <string>INFORMATION MANAGEMENT</string>
     </property>
@@ -538,6 +549,9 @@ border-radius: 10px;</string>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px; border: 1px solid orange;</string>
     </property>
     <property name="text">
      <string>CUSTOMER INFO</string>
@@ -570,6 +584,9 @@ border-radius: 10px;</string>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px; border: 1px solid orange;</string>
     </property>
     <property name="text">
      <string>STORAGE</string>
@@ -606,6 +623,9 @@ border-radius: 10px;</string>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px; border: 1px solid orange;</string>
+    </property>
     <property name="text">
      <string>STAFF INFO</string>
     </property>
@@ -638,6 +658,9 @@ border-radius: 10px;</string>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px; border: 1px solid orange;</string>
+    </property>
     <property name="text">
      <string>MAINTENANCE SCHEDULER</string>
     </property>
@@ -669,6 +692,9 @@ border-radius: 10px;</string>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px; border: 1px solid orange;</string>
     </property>
     <property name="text">
      <string>TASK ASSIGNMENT</string>
