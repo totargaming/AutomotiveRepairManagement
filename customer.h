@@ -1,36 +1,40 @@
-#ifndef CUSTOMER_H
-#define CUSTOMER_H
-#include "entitylist.h" // Include the header file for the EntityList class
-#include "removefromcustomer.h" // Include the header file for the RemoveFromCustomer class
+#ifndef CUSTOMER_H  // Preprocessor directive to prevent multiple inclusions of
+                    // this header file
+#define CUSTOMER_H  // Defines CUSTOMER_H symbol to indicate that this header
+                    // file has been included
+
+// Include necessary header files
+#include "entitylist.h"  // Includes custom header file for the EntityList class
+#include "removefromcustomer.h"  // Includes custom header file for the RemoveFromCustomer class
 
 // Define the Customer class, which inherits from EntityList
-class Customer : public EntityList
-{
-    Q_OBJECT // This macro is necessary for any object that uses signals or slots
-public:
-    // Constructor, takes a QWidget pointer as an argument with a default value of nullptr
-    Customer(QWidget *parent = nullptr);
+class Customer : public EntityList {
+  Q_OBJECT  // This macro must appear in the private section of a class
+            // definition that declares its own signals and slots or that uses
+            // other services provided by Qt's meta-object system.
 
-    // Override the add function from EntityList
-    void add() override;
-    // Override the remove function from EntityList
-    void remove() override;
-    // Override the showInfo function from EntityList
-    void showInfo(const QModelIndex &index) override;
+      public
+      : Customer(QWidget *parent =
+                     nullptr);  // Constructor declaration, takes a QWidget
+                                // pointer as an argument, default is nullptr
+  void add() override;          // Overrides the add function from EntityList
+  void remove() override;       // Overrides the remove function from EntityList
+  void showInfo(const QModelIndex &index)
+      override;  // Overrides the showInfo function from EntityList, takes a
+                 // const reference to a QModelIndex as an argument
 
-    // Override the loadList function from EntityList
-    void loadList() override;
-    // Override the idSort function from EntityList
-    void idSort() override;
-    // Override the nameSort function from EntityList
-    void nameSort() override;
-    void showEvent(QShowEvent *event); // Method to handle the show event
+  void loadList() override;  // Overrides the loadList function from EntityList
+  void idSort() override;    // Overrides the idSort function from EntityList
+  void nameSort() override;  // Overrides the nameSort function from EntityList
+  void showEvent(
+      QShowEvent *event);  // Function to handle the show event, takes a pointer
+                           // to a QShowEvent as an argument
 
-    // Destructor
-    ~Customer();
-private:
-    // Pointer to a RemoveFromCustomer object
-    RemoveFromCustomer* removeFromCustomer_ptr;
+  ~Customer();  // Destructor declaration
+
+ private:
+  RemoveFromCustomer
+      *removeFromCustomer_ptr;  // Pointer to a RemoveFromCustomer object
 };
 
-#endif // CUSTOMER_H
+#endif  // CUSTOMER_H  // End of preprocessor conditional directive

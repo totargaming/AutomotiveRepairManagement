@@ -1,53 +1,40 @@
-#ifndef TASKLIST_H
-#define TASKLIST_H
+#ifndef TASKLIST_H  // Preprocessor directive to prevent multiple inclusions of
+                    // this header file
+#define TASKLIST_H  // Defines TASKLIST_H symbol to indicate that this header
+                    // file has been included
 
-// Include the necessary header files
-#include "entitylist.h"
-#include "addtotask.h"
-#include <QDate>
+// Include necessary header files
+#include <QDate>  // Includes QDate class from Qt Core module for date handling
 
-// Declare the TaskList class, which inherits from EntityList
-class TaskList : public EntityList
-{
-    Q_OBJECT // Use the Q_OBJECT macro to enable signals and slots
+#include "addtotask.h"   // Includes custom header file for the AddToTask class
+#include "entitylist.h"  // Includes custom header file for the EntityList class
 
-public:
-    // Constructor for TaskList, with a default parent of nullptr
-    TaskList(QWidget *parent = nullptr);
+// Define the TaskList class, which inherits from EntityList
+class TaskList : public EntityList {
+  Q_OBJECT  // This macro must appear in the private section of a class
+            // definition that declares its own signals and slots or that uses
+            // other services provided by Qt's meta-object system.
 
-    // Override the showInfo function from EntityList to show information about a task
-    void showInfo(const QModelIndex &index) override;
+      public : explicit TaskList(
+                   QWidget *parent =
+                       nullptr);  // Constructor declaration, takes a QWidget
+                                  // pointer as an argument, default is nullptr
+  void showInfo(const QModelIndex &index)
+      override;                // Overridden function to show task info
+  void add() override;         // Overridden function to add task
+  void loadList() override;    // Overridden function to load task list
+  void idSort() override;      // Overridden function to sort tasks by id
+  void nameSort() override;    // Overridden function to sort tasks by name
+  virtual QString taskType();  // Function to get the task type
+  void idSort(
+      QString taskType);  // Function to sort tasks by id based on task type
+  void nameSort(
+      QString taskType);  // Function to sort tasks by name based on task type
+  void loadList(QString taskType);  // Function to load tasks based on task type
+  virtual ~TaskList();              // Destructor declaration
 
-    // Override the add function from EntityList to add a task
-    void add() override;
-
-    // Override the loadList function from EntityList to load the task list
-    void loadList() override;
-
-    // Override the idSort function from EntityList to sort the task list by ID
-    void idSort() override;
-
-    // Override the nameSort function from EntityList to sort the task list by name
-    void nameSort() override;
-
-    // Declare a function to get the task type
-    virtual QString taskType();
-
-    // Declare a function to sort the task list by ID based on the task type
-    void idSort(QString taskType);
-
-    // Declare a function to sort the task list by name based on the task type
-    void nameSort(QString taskType);
-
-    // Declare a function to load the task list based on the task type
-    void loadList(QString taskType);
-
-    // Destructor for TaskList
-    virtual ~TaskList();
-
-protected:
-    // Declare a pointer to an AddToTask object
-    AddToTask *addToTask_ptr;
+ protected:
+  AddToTask *addToTask_ptr;  // Pointer to the AddToTask object
 };
 
-#endif // TASKLIST_H
+#endif  // TASKLIST_H  // End of preprocessor conditional directive

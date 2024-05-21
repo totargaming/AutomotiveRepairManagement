@@ -1,67 +1,63 @@
-// This is the header guard. It prevents the header file from being included more than once in the same file.
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MAINWINDOW_H  // Preprocessor directive to prevent multiple inclusions
+                      // of this header file
+#define MAINWINDOW_H  // Defines MAINWINDOW_H symbol to indicate that this
+                      // header file has been included
 
-// Include the necessary header files.
-#include "SQLheader.h"
+// Include necessary header files
+#include <QDebug>  // Includes QDebug class for debugging
+#include <QGuiApplication>  // Includes QGuiApplication class for GUI application management
+#include <QMainWindow>  // Includes QMainWindow class from Qt Widgets module
+#include <QScreen>      // Includes QScreen class for screen information
 
-#include <QMainWindow>
-#include <QDebug>
-#include <QGuiApplication>
-#include <QScreen>
-#include "storage.h"
-#include "car.h"
-#include "customer.h"
-#include "staff.h"
-#include "maintenance.h"
-#include "maintenancetask.h"
-#include "deliverytask.h"
+#include "SQLheader.h"  // Includes custom SQLheader file
+#include "car.h"        // Includes custom header file for the Car class
+#include "customer.h"   // Includes custom header file for the Customer class
+#include "deliverytask.h"  // Includes custom header file for the DeliveryTask class
+#include "maintenance.h"  // Includes custom header file for the Maintenance class
+#include "maintenancetask.h"  // Includes custom header file for the MaintenanceTask class
+#include "staff.h"            // Includes custom header file for the Staff class
+#include "storage.h"  // Includes custom header file for the Storage class
 
-// Begin the Qt namespace.
-QT_BEGIN_NAMESPACE
-namespace Ui {
-// Forward declare the MainWindow class in the Ui namespace.
-class MainWindow;
+QT_BEGIN_NAMESPACE  // Begin the Qt namespace
+    namespace Ui {
+  class MainWindow;  // Forward declaration of the MainWindow class in the Ui
+                     // namespace
 }
-// End the Qt namespace.
-QT_END_NAMESPACE
+QT_END_NAMESPACE  // End the Qt namespace
 
-// Declare the MainWindow class, which inherits from QMainWindow.
-class MainWindow : public QMainWindow
-{
-    // This macro declares several member functions that are used by Qt's meta-object system.
-    Q_OBJECT
+    // Define the MainWindow class, which inherits from QMainWindow
+    class MainWindow : public QMainWindow {
+  Q_OBJECT  // This macro must appear in the private section of a class
+            // definition that declares its own signals and slots or that uses
+            // other services provided by Qt's meta-object system.
 
-public:
-    // Declare the constructor and destructor for the MainWindow class.
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+      public
+      : MainWindow(QWidget* parent =
+                       nullptr);  // Constructor declaration, takes a QWidget
+                                  // pointer as an argument, default is nullptr
+  ~MainWindow();                  // Destructor declaration
 
-private slots:
-    // Declare slots for the click events of the various buttons.
-    void on_Customer_clicked();
-    void on_Maintenance_clicked();
-    void on_Staff_clicked();
-    void on_Storage_clicked();
-    void on_Task_clicked();
-    void on_Car_clicked();
+ private slots:
+  // Slots for various button clicked signals
+  void on_Customer_clicked();
+  void on_Maintenance_clicked();
+  void on_Staff_clicked();
+  void on_Storage_clicked();
+  void on_Task_clicked();
+  void on_Car_clicked();
+  void on_exitBtn_clicked();
 
-    void on_exitBtn_clicked();
-
-private:
-    // Declare a pointer to the MainWindow class in the Ui namespace.
-    Ui::MainWindow *ui;
-    // Declare a QSqlDatabase object for the database connection.
-    QSqlDatabase database;
-    // Declare pointers to the various classes.
-    Storage* storage_ptr;
-    Car* car_ptr;
-    Customer* customer_ptr;
-    Staff* staff_ptr;
-    Maintenance* maintenance_ptr;
-    MaintenanceTask* maintenanceTask_ptr;
-    DeliveryTask* deliveryTask_ptr;
+ private:
+  Ui::MainWindow* ui;     // Pointer to the UI for the MainWindow class
+  QSqlDatabase database;  // QSqlDatabase object for the database connection
+  // Pointers to instances of various classes
+  Storage* storage_ptr;
+  Car* car_ptr;
+  Customer* customer_ptr;
+  Staff* staff_ptr;
+  Maintenance* maintenance_ptr;
+  MaintenanceTask* maintenanceTask_ptr;
+  DeliveryTask* deliveryTask_ptr;
 };
 
-// This is the end of the header guard.
-#endif // MAINWINDOW_H
+#endif  // MAINWINDOW_H  // End of preprocessor conditional directive

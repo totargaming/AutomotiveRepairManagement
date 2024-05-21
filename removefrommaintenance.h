@@ -1,64 +1,55 @@
-// Ensure the header file is included only once by the preprocessor
-#ifndef REMOVEFROMMAINTENANCE_H
-#define REMOVEFROMMAINTENANCE_H
+#ifndef REMOVEFROMMAINTENANCE_H  // Preprocessor directive to prevent multiple
+                                 // inclusions of this header file
+#define REMOVEFROMMAINTENANCE_H  // Defines REMOVEFROMMAINTENANCE_H symbol to
+                                 // indicate that this header file has been
+                                 // included
 
-// Include necessary Qt libraries
-#include <QDate>        // Provides functionality to work with dates
-#include <QDialog>      // Provides functionality to create dialog windows
-#include <QMessageBox>  // Provides functionality to create message box
+// Include necessary header files
+#include <QDate>  // Includes QDate class from Qt Core module for date handling
+#include <QDialog>  // Includes QDialog class from Qt Widgets module for dialog window
+#include <QMessageBox>  // Includes QMessageBox class for displaying messages
 
-#include "SQLheader.h"  // Include the SQL header file (assumed to contain SQL related definitions)
-#include "validation.h"  // Include the validation header file (assumed to contain validation related definitions)
+#include "SQLheader.h"   // Includes custom SQLheader file
+#include "validation.h"  // Includes custom header file for the Validation class
 
-// Declare a namespace for the User Interface (UI)
 namespace Ui {
 class RemoveFromMaintenance;  // Forward declaration of the
-                              // RemoveFromMaintenance class
+                              // RemoveFromMaintenance class in the Ui namespace
 }
 
 // Define the RemoveFromMaintenance class, which inherits from QDialog and
 // Validation
-class RemoveFromMaintenance : public QDialog, Validation
-{
-  Q_OBJECT  // Macro that enables Qt's meta-object system
+class RemoveFromMaintenance : public QDialog, Validation {
+  Q_OBJECT  // This macro must appear in the private section of a class
+            // definition that declares its own signals and slots or that uses
+            // other services provided by Qt's meta-object system.
 
-public :
-      // Declare constructor
-  explicit RemoveFromMaintenance(QWidget *parent = nullptr);
-
-  // Declare function to validate user input
-  bool validateUserInput();
-
-  // Declare function to load data into combo box
-  void loadBox();
-
-  // Declare function to handle show event
-  void showEvent(QShowEvent *event);
-
-  // Declare destructor
-  ~RemoveFromMaintenance();
-  friend class TestRemoveFromMaintenance;
+      public : explicit RemoveFromMaintenance(
+                   QWidget *parent =
+                       nullptr);  // Constructor declaration, takes a QWidget
+                                  // pointer as an argument, default is nullptr
+  bool validateUserInput();       // Function to validate user input
+  void loadBox();                 // Function to load items into a combo box
+  void showEvent(QShowEvent *event);  // Overridden function from QWidget to
+                                      // handle show events
+  ~RemoveFromMaintenance();           // Destructor declaration
+  friend class TestRemoveFromMaintenance;  // Friend class declaration for
+                                           // testing
 
  signals:
-  // Declare signal that is emitted when maintenance is removed
-  void maintenanceRemoved();
+  void
+  maintenanceRemoved();  // Signal that is emitted when a maintenance is removed
 
  private slots:
-  // Declare slot to handle click event of remove button
+  // Slots for various button clicked signals and text changes
   void on_removeBtn_clicked();
-
-  // Declare slot to handle change in selected item in combo box
   void on_removeList_currentTextChanged(const QString &text);
-
   void on_removeBtn_2_clicked();
 
-  private:
-  // Declare pointer to UI object
-  Ui::RemoveFromMaintenance *ui;
-
-  // Declare object for database connection
-  QSqlDatabase database;
+ private:
+  Ui::RemoveFromMaintenance
+      *ui;  // Pointer to the UI for the RemoveFromMaintenance class
+  QSqlDatabase database;  // QSqlDatabase object for the database connection
 };
 
-// End of the preprocessor conditional
-#endif  // REMOVEFROMMAINTENANCE_H
+#endif  // REMOVEFROMMAINTENANCE_H  // End of preprocessor conditional directive

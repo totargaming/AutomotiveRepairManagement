@@ -1,58 +1,46 @@
-#ifndef STORAGE_H
-#define STORAGE_H
+#ifndef STORAGE_H  // Preprocessor directive to prevent multiple inclusions of
+                   // this header file
+#define STORAGE_H  // Defines STORAGE_H symbol to indicate that this header file
+                   // has been included
 
 // Include necessary header files
-#include <QDialog>
-#include "SQLheader.h"
-#include "addtostorage.h"
-#include "partupdate.h"
+#include <QDialog>  // Includes QDialog class from Qt Widgets module for dialog window
 
-// Declare the Ui namespace and forward declare the Storage class
+#include "SQLheader.h"  // Includes custom SQLheader file
+#include "addtostorage.h"  // Includes custom header file for the AddToStorage class
+#include "partupdate.h"  // Includes custom header file for the PartUpdate class
+
 namespace Ui {
-class Storage;
+class Storage;  // Forward declaration of the Storage class in the Ui namespace
 }
 
-// Declare the Storage class, which inherits from QDialog
-class Storage : public QDialog
-{
-    Q_OBJECT // Use the Q_OBJECT macro to enable signals and slots
+// Define the Storage class, which inherits from QDialog
+class Storage : public QDialog {
+  Q_OBJECT  // This macro must appear in the private section of a class
+            // definition that declares its own signals and slots or that uses
+            // other services provided by Qt's meta-object system.
 
-public:
-    // Declare the constructor, with a default parameter for parent
-    explicit Storage(QWidget *parent = nullptr);
+      public : explicit Storage(
+                   QWidget* parent =
+                       nullptr);  // Constructor declaration, takes a QWidget
+                                  // pointer as an argument, default is nullptr
+  void loadAll();                 // Function to load all storage items
+  void showEvent(QShowEvent* event);  // Overridden function from QWidget to
+                                      // handle show events
+  ~Storage();                         // Destructor declaration
 
-    // Declare the loadAll function
-    void loadAll();
-    void showEvent(QShowEvent *event); // Method to handle the show event
+ private slots:
+  // Slots for various button clicked signals
+  void on_searchBtn_clicked();
+  void on_refreshBtn_clicked();
+  void on_addBtn_clicked();
+  void on_updateBtn_clicked();
 
-    // Declare the destructor
-    ~Storage();
-
-private slots:
-    // Declare the slot for the search button click event
-    void on_searchBtn_clicked();
-
-    // Declare the slot for the refresh button click event
-    void on_refreshBtn_clicked();
-
-    // Declare the slot for the add button click event
-    void on_addBtn_clicked();
-
-    // Declare the slot for the update button click event
-    void on_updateBtn_clicked();
-
-private:
-    // Declare a pointer to the UI for the Storage
-    Ui::Storage *ui;
-
-    // Declare a pointer to a QSqlQueryModel
-    QSqlQueryModel* model;
-
-    // Declare a pointer to an addToStorage object
-    addToStorage* addToStorage_ptr;
-
-    // Declare a pointer to a PartUpdate object
-    PartUpdate* partUpdate_ptr;
+ private:
+  Ui::Storage* ui;                 // Pointer to the UI for the Storage class
+  QSqlQueryModel* model;           // Pointer to the QSqlQueryModel object
+  addToStorage* addToStorage_ptr;  // Pointer to the AddToStorage object
+  PartUpdate* partUpdate_ptr;      // Pointer to the PartUpdate object
 };
 
-#endif // STORAGE_H
+#endif  // STORAGE_H  // End of preprocessor conditional directive

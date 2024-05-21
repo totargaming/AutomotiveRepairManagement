@@ -1,48 +1,38 @@
-#ifndef STAFF_H
-#define STAFF_H
+#ifndef STAFF_H  // Preprocessor directive to prevent multiple inclusions of
+                 // this header file
+#define STAFF_H  // Defines STAFF_H symbol to indicate that this header file has
+                 // been included
 
-// Include the necessary header files
-#include "entitylist.h"
-#include "addtostaff.h"
-#include "removefromstaff.h"
+// Include necessary header files
+#include "addtostaff.h"  // Includes custom header file for the AddToStaff class
+#include "entitylist.h"  // Includes custom header file for the EntityList class
+#include "removefromstaff.h"  // Includes custom header file for the RemoveFromStaff class
 
-// Declare the Staff class, which inherits from EntityList
-class Staff : public EntityList
-{
-    Q_OBJECT // Use the Q_OBJECT macro to enable signals and slots
+// Define the Staff class, which inherits from EntityList
+class Staff : public EntityList {
+  Q_OBJECT  // This macro must appear in the private section of a class
+            // definition that declares its own signals and slots or that uses
+            // other services provided by Qt's meta-object system.
 
-public:
-    // Declare the constructor, with a default parameter for parent
-    Staff(QWidget *parent = nullptr);
+      public : explicit Staff(
+                   QWidget *parent =
+                       nullptr);  // Constructor declaration, takes a QWidget
+                                  // pointer as an argument, default is nullptr
+  void add() override;            // Overridden function to add staff
+  void remove() override;         // Overridden function to remove staff
+  void showInfo(const QModelIndex &index)
+      override;              // Overridden function to show staff info
+  void loadList() override;  // Overridden function to load staff list
+  void idSort() override;    // Overridden function to sort staff by id
+  void nameSort() override;  // Overridden function to sort staff by name
+  void showEvent(QShowEvent *event);  // Overridden function from QWidget to
+                                      // handle show events
+  ~Staff();                           // Destructor declaration
 
-    // Declare the overridden add function
-    void add() override;
-
-    // Declare the overridden remove function
-    void remove() override;
-
-    // Declare the overridden showInfo function, which takes a QModelIndex as a parameter
-    void showInfo(const QModelIndex &index) override;
-
-    // Declare the overridden loadList function
-    void loadList() override;
-
-    // Declare the overridden idSort function
-    void idSort() override;
-
-    // Declare the overridden nameSort function
-    void nameSort() override;
-    void showEvent(QShowEvent *event); // Method to handle the show event
-
-    // Declare the destructor
-    ~Staff();
-
-private:
-    // Declare a pointer to an AddToStaff object
-    AddToStaff* addToStaff_ptr;
-
-    // Declare a pointer to a RemoveFromStaff object
-    RemoveFromStaff* removeFromStaff_ptr;
+ private:
+  AddToStaff *addToStaff_ptr;  // Pointer to the AddToStaff object
+  RemoveFromStaff
+      *removeFromStaff_ptr;  // Pointer to the RemoveFromStaff object
 };
 
-#endif // STAFF_H
+#endif  // STAFF_H  // End of preprocessor conditional directive

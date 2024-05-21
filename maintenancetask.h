@@ -1,39 +1,36 @@
-// This is the header guard. It prevents the header file from being included more than once in the same file.
-#ifndef MAINTENANCETASK_H
-#define MAINTENANCETASK_H
+#ifndef MAINTENANCETASK_H  // Preprocessor directive to prevent multiple
+                           // inclusions of this header file
+#define MAINTENANCETASK_H  // Defines MAINTENANCETASK_H symbol to indicate that
+                           // this header file has been included
 
-// Include the necessary header file.
-#include "tasklist.h" // This is a custom header file for the TaskList class.
+// Include necessary header files
+#include "tasklist.h"  // Includes custom header file for the TaskList class
 
-// Declare the MaintenanceTask class, which inherits from the TaskList class.
-class MaintenanceTask: public TaskList
-{
-    Q_OBJECT
-public:
-    // Declare the constructor for the MaintenanceTask class. It takes a QWidget pointer as a parameter, with a default value of nullptr.
-    MaintenanceTask(QWidget* parent = nullptr);
-    
-    // Declare a function to load the task list. This function is overridden from the TaskList class.
-    void loadList() override {
+// Define the MaintenanceTask class, which inherits from TaskList
+class MaintenanceTask : public TaskList {
+  Q_OBJECT  // This macro must appear in the private section of a class
+            // definition that declares its own signals and slots or that uses
+            // other services provided by Qt's meta-object system.
 
-    }
-    
-    // Declare a function to get the type of the task. This function is overridden from the TaskList class.
-    QString taskType() override;
-    
-    // Declare a function to remove a task. This function is overridden from the TaskList class.
-    void remove() override;
-    
-    // Declare a function to change the status of a task to delivery. It takes a QModelIndex as a parameter.
-    void changeToDelivery(const QModelIndex &index);
-    void showEvent(QShowEvent *event); // Method to handle the show event
+      public : explicit MaintenanceTask(
+                   QWidget *parent =
+                       nullptr);  // Constructor declaration, takes a QWidget
+                                  // pointer as an argument, default is nullptr
 
-    // Declare the destructor for the MaintenanceTask class.
-    ~MaintenanceTask();
-signals:
-    void forwardedToDelivery();
+  // Overridden functions from the TaskList class
+  void loadList() override;
+  QString taskType() override;
+  void remove() override;
 
+  // Function to change the status of a task to delivery
+  void changeToDelivery(const QModelIndex &index);
+  void showEvent(QShowEvent *event);  // Function to handle the show event
+
+  ~MaintenanceTask();  // Destructor declaration
+
+ signals:
+  void forwardedToDelivery();  // Signal that is emitted when a task is
+                               // forwarded to delivery
 };
 
-// This is the end of the header guard.
-#endif // MAINTENANCETASK_H
+#endif  // MAINTENANCETASK_H  // End of preprocessor conditional directive
